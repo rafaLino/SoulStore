@@ -1,0 +1,14 @@
+/*FONTS*/
+@font-face {
+    font-family: optimusPriceps;
+    src: url(../fonts/OptimusPrinceps.ttf);
+}
+@font-face {
+    font-family: optimusPriceps;
+    src: url(../fonts/OptimusPrincepsSemiBold.ttf);
+    font-weight: bold;
+}
+@font-face {
+    font-family:ringBearer;
+    src: url(../fonts/ringbearer.ttf);
+}

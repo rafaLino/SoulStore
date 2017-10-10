@@ -1,0 +1,251 @@
+*{
+	margin:0;
+	padding: 0;
+
+
+}
+h1.titulo{
+		font-family: ringBearer;
+		font-variant: small-caps;
+		font-size: 40px;
+		line-height: 0.2;
+		position: relative;
+		margin-left: 12px;
+		color:#fff;
+		text-shadow: 2px 3px  2px rgba(173, 101, 0, 0.96);
+
+}
+h1.subtitulo{
+		font-family: optimusPriceps;
+		font-size: 14px;
+		line-height: 0.1;
+		letter-spacing: 0;
+		position: relative;
+		margin-left: 20px;
+		padding-left: 85px;
+		padding-top: 25px;
+		color:white;
+		text-shadow: 1px 1px 4px darkred;
+}
+#box_titulo {
+	display: block;
+	position: relative;
+	margin-left: 20px;
+	top:10px;
+	padding: 40px 0 0 20px; /*top - right - bottom - left*/
+	width: 300px;
+	height: 70px;
+}
+
+.topo{
+	width: 100%;
+	height: 300px;
+	position: fixed;
+	background-color: rgba(25, 25, 25, 0.95);
+
+}
+.superior {
+		position: fixed;
+		margin:0 auto;
+		height: 130px;
+		border-bottom: 2px solid darkred;
+		box-shadow: 0 0 1px #5e1010; /*quase  darkred*/
+
+}
+#topo_box{
+	display: inline-block;
+	box-sizing:border-box;
+	width: 250px;
+	height:120px;
+	position:fixed;
+	top:10px;
+	right:5px;
+	float:right;
+	clear:both ;
+	padding-right: 20px;
+
+
+}
+
+#topo_box > div{
+	display: block;
+	margin:14px 10px;
+	float: left;
+	position: relative;
+	width: 70px;
+	height:55px;
+	top:2px;
+	right:0;
+	left:10px;
+
+}
+img.image_account{
+	display:inline-block;
+	position:relative;
+	width:50px;
+	height:50px;
+	padding-right: 14px;
+	background-color: rgba(237, 237, 237, 0.90);
+	border:2px  solid #8f8f8f;
+	border-radius: 5px;
+
+}
+.arrow-account{
+	position:absolute;
+	top:0;
+	bottom:33px;
+	right:0;
+	left:50px;
+	height: 50px;
+	width:30px;
+	margin-top:2px;
+	color: black;
+	background: url("../img/icon/if_arrow-down.png") no-repeat;
+}
+#box_contador{
+	display:inline-block;
+	margin: 12px 2px 2px 18px ;
+	position:absolute;
+	top:0;
+	left:50px;
+	padding-left: 5px;
+	width:30px;
+	height: 50px;
+	line-height: 0.9;
+}
+#box_contador span{
+	color:greenyellow;
+}
+#box_contador span:first-child{
+	font-size: 30px;
+}
+#box_contador span:last-child {
+	font-size: 16px;
+}
+/*reset input*/
+.input{
+	border:none;
+	box-sizing: border-box;
+	box-shadow: none;
+	outline:none;
+}
+.input:focus{
+	border:none;
+	box-shadow: none;
+	outline: none;
+}
+.input:focus::-webkit-input-placeholder{
+	color:transparent;
+
+}
+/*Barra de Pesquisa*/
+#search-topo{
+	margin:0;
+	display:inline-block;
+	width: 330px;
+	height: 35px;
+	position: absolute;
+	top:20%;
+	left: 40%;
+	padding-left: 25px;
+	background: url("../img/icon/if_icon-search.png") no-repeat left;
+	border: 1px solid rgba(255, 255, 255, 0.57);
+	border-radius: 5px;
+}
+#search-topo::-webkit-input-placeholder{
+	text-align: left;
+	font-variant: small-caps;
+	text-overflow: ellipsis;
+	color: #b2b2b2;
+}
+#search-topo:focus{
+	background: whitesmoke url("../img/icon/if_icon-search.png") no-repeat left;
+	border: 2px solid #c76d05;
+	outline: none;
+}
+#search-topo:focus::-webkit-input-placeholder{
+	color:transparent;
+}
+.arrow-account:hover .box-login{
+	display: block;
+}
+
+/*FORM DO LOGIN*/
+
+.box-login {
+	display: none;
+	position: absolute;
+	top:0;
+	right:10px;
+	width:200px;
+	height:152px;
+}
+.box-login > form{
+	position: absolute;
+	top: 52px;
+	right: -16px;
+	padding-left: 15px;
+	width: 200px;
+	height: 100px;
+	background-color: rgba(25, 25, 25, 0.95);
+	border: 5px solid transparent;
+	border-radius: 7px;
+	z-index: 1;
+}
+.box-login input{
+	margin: 5px 2px;
+	width: 180px;
+	height:25px;
+	position:relative;
+	right:10px;
+	padding-left: 5px;
+	border-radius: 3px;
+	word-spacing: 2px;
+	vertical-align: text-bottom;
+}
+.box-login input:focus{
+	box-shadow: 2px 2px 2px darkred;
+
+}
+.botao {
+	display:block;
+	position:relative;
+	border:none;
+	border-radius: 2px;
+
+}
+
+.entrar{
+	margin-left: 3px;
+	margin-top: 8px;
+	left:-5px;
+	bottom:5px;
+	width:70px;
+	height:25px;
+	padding:5px;
+	background-color: #881700;
+	color:white;
+	cursor:pointer;
+
+}
+
+
+.corpo{ /*ELEMENTO TESTE*/
+	margin:auto ;
+	position: relative;
+	top:250px;
+	left: 0;
+	width: 200px;
+	height: 3000px;
+	background-color: #2b542c;
+	z-index: -1;
+}
+
+
+
+
+
+
+
+
+
