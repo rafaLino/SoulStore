@@ -10,6 +10,7 @@
             <script  src="bootstrap/bootstrap.min.js"></script>
         <!--normalize-->
             <link rel="stylesheet" href="style/normalize.css">
+            <link rel="stylesheet" href="style/resets.css">
         <!--CSS-->
              <link rel="stylesheet" type="text/css" href="style/index.css">
              <link rel="stylesheet" type="text/css" href="style/fonts.css">
@@ -23,25 +24,32 @@
 <div class="topo">
    <div id="superior">
     <div id="box_titulo">
-        <h1 class="titulo">SOULSTORE</h1>
-        <h1 class="subtitulo"> A loja do Dark Souls</h1>
+       <a href="index.html">
+           <h1 class="titulo">SOULSTORE</h1>
+           <h2 class="subtitulo"> A loja do Dark Souls</h2>
+       </a>
     </div>
-    <div id="topo_box">
+    <div id="account_box">
        <div id="account">
-            <img class="image_account" src="img/icon/if_ic_account_box.png" alt="Login Account">
-            <a class="arrow-account" href="#" >
-                <div class="box-login" id="login">
-                    <form action="" method="POST">
-                    <input class="input" type="text" name="email" placeholder="E-mail">
-                    <input class="input" type="password" name="senha" placeholder="Senha">
+            <img class="image_account" src="img/icon/if_Customers_Filled_white.png" alt="Login Account">
+                 <div class="arrow-account"  href="#"></div>
+                 <div class="box-login" id="login">
+                    <form  action="" method="POST">
+                    <input class="input" type="text" autocomplete="off" name="email" placeholder="E-mail">
+                    <input onclick="resetSenha()" class="input" type="password" autocomplete="off" name="senha" placeholder="Senha">
                        <button class="botao" id="entrar" type="submit">Entrar</button>
+                        <a><span>Esqueci minha senha</span></a>
                     </form>
                 </div>
-            </a>
         </div>
         <div id="cart">
-            <img class="image_account" src="img/icon/if_shop.png" alt="shop cart">
-            <a class="arrow-account" href="#"></a>
+                <img class="image_account" src="img/icon/if_Asset_21.png" alt="shop cart">
+                 <span class="legenda" id="legend_image_cart">Carrinho de Compras</span>
+                <div class="box-cart">
+                    <ul>
+                        <li>Meu Carrinho</li>
+                    </ul>
+                </div>
                  <div id="box_contador">
                     <span>00</span>
                     <span>Itens</span>
@@ -49,8 +57,8 @@
         </div>
     </div><!--FIM DO TOPOBOX-->
         <div id="barra_pesquisa" >
-            <input id="search-topo" type="text"  name="search" placeholder="Pesquisar">
-            <button type="button" class="botao" id="buscar"></button>
+            <input id="search-topo" type="text" autocomplete="off"  name="search" placeholder="Pesquisar">
+            <button type="button" class="botao" id="buscar" ></button>
         </div>
 </div><!--FIM DO TOPO SUPERIOR-->
 <div id="inferior">
