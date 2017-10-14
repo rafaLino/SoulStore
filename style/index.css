@@ -4,20 +4,17 @@
 	box-sizing: border-box;
 }
 body{
-	background-color: rgba(49, 51, 53, 0.6);
-	z-index: -1;
+	background: rgba(49, 51, 53, 0.6);
 }
+/*TÍTULO*/
 #box_titulo{
 	display: block;
 	position: fixed;
 	margin-left:15%;
-	top:20px;
+	top:15px;
 	width: 300px;
 	height: 70px;
 	cursor:pointer;
-}
-#box_titulo:active{
-
 }
 .titulo{
 	font-family: ringBearer;
@@ -30,7 +27,6 @@ body{
 	text-shadow: 2px 3px  2px rgba(173, 101, 0, 0.96);
 
 }
-
 .subtitulo{
 	font-family: optimusPriceps;
 	font-size: 15px;
@@ -45,6 +41,7 @@ body{
 	text-shadow: 1px 1px 4px darkred;
 }
 
+/*CLASSES TOPO*/
 .topo{
 	width: 100%;
 	height: 180px;
@@ -52,7 +49,6 @@ body{
 	background-color: rgba(25, 25, 25, 0.95);
 	/*background-color: rgba(0,0,0,0.6);*/
 }
-
 #superior {
 		position: fixed;
 		width: 100%;
@@ -60,7 +56,6 @@ body{
 		border-bottom: 1px solid darkred;
 		box-shadow: 0 1px 2px #5e1010; /*quase  darkred*/
 }
-
 #inferior{
 	position: fixed;
 	top:130px;
@@ -71,6 +66,7 @@ body{
 	z-index: -1;
 }
 
+/*BOX DOS ITENS CONTA+CARRINHO*/
 #account_box{
 	display: block;
 	width: 180px;
@@ -80,7 +76,6 @@ body{
 	right: 150px;
 
 }
-
 #account_box > div{
 	display: inline-block;
 	position: relative;
@@ -88,7 +83,6 @@ body{
 	height:60px;
 	margin-right: 15px;
 }
-
 .image_account{
 	display:block;
 	position:absolute;
@@ -98,12 +92,10 @@ body{
 	height:40px;
 	cursor: pointer;
 }
-
-#cart > img:active{
+#account_box  img:active{
 	opacity: 0.8;
 
 }
-
 .arrow-account{
 	display: block;
 	position:absolute;
@@ -115,6 +107,7 @@ body{
 	cursor: pointer;
 }
 
+/*BOX CONTADOR DE ITENS */
 #box_contador{
 	display:none;
 	position:absolute;
@@ -125,31 +118,27 @@ body{
 	height: 58px;
 	line-height: 0.9;
 }
-
 #box_contador span{
 	color:greenyellow;
 }
-
 #box_contador span:first-child{
 	font-size: 30px;
 }
-
 #box_contador span:last-child {
 	font-size: 16px;
 	font-weight: bold;
 }
 
-/*Barra de Pesquisa*/
+/*BARRA DE PESQUISA*/
 #barra_pesquisa{
 	display: block;
 	width: 370px;
 	height:35px;
 	margin: 0 auto;
 	position: absolute;
-	top:40px;
+	top:30px;
 	left:550px;
 }
-
 #search-topo{
 	margin:auto;
 	position: absolute;
@@ -165,24 +154,20 @@ body{
 	border-top-left-radius:5px;
 	border-bottom-left-radius:5px;
 }
-
 #search-topo:focus{
 	background: whitesmoke url("../img/icon/if_icon-search.png") no-repeat left;
 	border: 2px solid #9a5404;
 	outline: none;
 }
-
 #search-topo::-webkit-input-placeholder{
 	text-align: left;
 	font-variant: small-caps;
 	text-overflow: ellipsis;
 	color: #b2b2b2;
 }
-
 #search-topo:focus::-webkit-input-placeholder{
 	color:transparent;
 }
-
 #buscar{
 	position:absolute;
 	top:0;
@@ -195,41 +180,73 @@ body{
 	background: #4d4d4d url(../img/icon/search_2.png) no-repeat left;
 	background-size: 40px 30px;
 }
-
 #buscar:hover{
 	background-color: black;
 	border-left: 1px solid rgba(255,255,255,0.57);
 }
-
 #buscar:active{
 	box-shadow: 0 1px gray;
 	transform:translateY(1px);
 	background-color: #252525;
 }
 
-.arrow-account:hover{
-	opacity: 0.5;
-}
-/*LOGIN*/
-/*.arrow-account:hover .box-login{
-	display: block;
-}*/
+/*ARROW HOVER BOX LOGIN*/
 #account:hover .box-login{
 	display: block;
 }
 #account:hover .arrow-account{
 	opacity:0.5;
 }
+
+/*BOX LOGIN*/
 .box-login {
 	display:none;
 	position: absolute;
-	top:30px;
-	right:0;
-	width:200px;
-	height:250px;
+	top:50px;
+	right:14px;
+	width:190px;
+	height:100px;
 	z-index: 1;
+	cursor: pointer;
+	background-color: rgba(25, 25, 25, 0.95);
+	border: 1px solid rgba(42,42,42);
+	border-radius:2px;
+}
+.item-login {
+	font-family: optimusPriceps;
+	font-size: 12px;
+	color:white;
+}
+#welcome{
+	margin-top: 4px;
+	margin-left:15px;
+	position:relative;
+	text-align: center;
+	top:5px;
+	color: white;
+}
+a.item-login{
+	display: inline-block;
+	margin-left:30px;
+	margin-bottom: 10px;
+	padding-left: 25px;
+}
+a.item-login:hover{
+	text-decoration: underline;
+	color:white;
+}
+#minha_conta{
+	background: url(../img/icon/if_Customers_Filled_white.png) no-repeat;
+	background-size: 14px 14px;
+
+}
+#meus_pedidos{
+	background: url(../img/icon/list1.png) no-repeat;
+	background-size: 14px 14px;
 }
 
+
+/*
 .box-login > form{
 	position: relative;
 	top: 30px;
@@ -240,9 +257,7 @@ body{
 	background-color: rgba(25, 25, 25, 0.91);
 	border: 5px solid transparent ;
 	border-radius: 7px;
-	z-index: 1;
 }
-
 .box-login input{
 	margin: 4px 2px 5px;
 	width: 180px;
@@ -255,7 +270,6 @@ body{
 	vertical-align: text-bottom;
 	color:black;
 }
-
 .box-login input:focus{
 	box-shadow: 2px 2px 2px darkred;
 
@@ -276,11 +290,9 @@ body{
 	font-size: 12px;
 	box-shadow: 1px 1px #985f0d;
 }
-
 #entrar:hover{
 	background-color: #691200;
 }
-
 #entrar:active{
 	background-color: #691200;
 	box-shadow: 0  0 #8b530d;
@@ -288,7 +300,9 @@ body{
 	padding: 3px;
 }
 
-/*esqueceu a senha*/
+/*
+//esqueceu a senha
+
 .box-login span{
 	color:#3278bf;
 	font-family:"Times New Roman", "Calibri Light";
@@ -306,7 +320,12 @@ body{
 .box-login span:active{
 	color: #44ade4;
 }
+*/
 
+/*BOX CART*/
+.box-cart{
+	display: none;
+}
 #legend_image_cart{
 	display: block;
 	visibility: hidden;
@@ -316,16 +335,11 @@ body{
 	left:50px;
 
 }
-
 #cart:hover #legend_image_cart{
 	visibility: visible;
 }
 
-.box-cart{
-	display: none;
-}
-
-
+/*BARRA NAVEGAÇÃO*/
 #nav{
 	width: 100%;
 	height: 60px;
@@ -334,6 +348,7 @@ body{
 	text-align: center;
 	overflow: hidden;
 	z-index: -1;
+	position: relative;
 }
 a.categoria {
 	font-family: ringBearer,sans-serif;
@@ -350,23 +365,23 @@ a.categoria:first-letter{
 	font-family: optimusPriceps;
 	font-weight: bold;
 }
-
 a.categoria:hover{
 	/*font-size: 20px;*/
 	color:deepskyblue;
 	letter-spacing: 0;
 }
 
-.corpo{ /*ELEMENTO TESTE*/
+/*ELEMENTO TESTE*/
+.corpo{
 	position: relative;
 	margin:auto;
 	top:0px;
 	right: 0px;
 	width: 980px;
 	height: 1300px;
-	background: transparent url(../img/artorias_wall.jpg) no-repeat bottom left ;
+	/*background: transparent url(../img/artorias_wall.jpg) no-repeat bottom left ;*/
 	z-index: -1;
-	border:2px solid white;
+	border:3px solid white;
 }
 
 

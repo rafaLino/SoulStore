@@ -5,8 +5,6 @@ function resetSenha() {
         senha[i].value="";
     }
 }
-
-
 function imgNotFound(img){
  	img.src = "img/icon/noImage.jpg";
  }

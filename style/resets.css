@@ -32,21 +32,29 @@
 
 }
 
-a {
+.link {
     text-decoration: none;
     color:black;
 }
-a:link{
+
+.link:link{
     text-decoration: none;
     color:black;
 }
-a:hover{
+
+.link:hover{
     text-decoration: none;
     color:black;
 }
-a:active{
+
+.link:active{
     text-decoration: none;
     color:black;
+}
+
+.list{
+    text-decoration: none;
+    list-style-type: none;
 }
 
 .legenda{
@@ -58,8 +66,8 @@ a:active{
     font-size:10px;
     border:1px solid white;
     border-radius:2px;
-    transition: visibility 0.2s 0.6s;
-    -webkit-transition: visibility 0.2s 0.6s;
+    transition: visibility 0.2s 0.7s;
+    -webkit-transition: visibility 0.2s 0.7s;
     transition-timing-function:ease-in;
     -webkit-transition-timing-function:ease-in;
 }

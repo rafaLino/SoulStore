@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
     <!--IMPORTS-->
         <!-- BOOTSTRAP-->
-            <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">
+            <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
             <script  src="bootstrap/jquery-3.1.1.min.js"></script>
             <script  src="bootstrap/bootstrap.min.js"></script>
         <!--normalize-->
@@ -14,6 +15,7 @@
         <!--CSS-->
              <link rel="stylesheet" type="text/css" href="style/index.css">
              <link rel="stylesheet" type="text/css" href="style/fonts.css">
+            <link rel="stylesheet" type="text/css" href="style/modals.css">
         <!--JS-->
              <script  src="script/Myscript.js"></script>
 
@@ -24,7 +26,7 @@
 <div class="topo">
    <div id="superior">
     <div id="box_titulo">
-       <a href="index.html">
+       <a href="index.html" class="link">
            <h1 class="titulo">SOULSTORE</h1>
            <h2 class="subtitulo"> A loja do Dark Souls</h2>
        </a>
@@ -33,13 +35,23 @@
        <div id="account">
             <img class="image_account" src="img/icon/if_Customers_Filled_white.png" alt="Login Account">
                  <div class="arrow-account"  href="#"></div>
-                 <div class="box-login" id="login">
-                    <form  action="" method="POST">
+                    <div class="box-login">
+                        <ul>
+                            <p class="item-login" id="welcome">Bem vindo, The chosen one !</p>
+                            <li class="list">
+                                <a id="minha_conta" data-toggle="modal" class="item-login" href="#loginModal" >Minha Conta</a>
+                            </li>
+                            <li     class="list">
+                                <a id="meus_pedidos" class="item-login">Meus Pedidos</a>
+                            </li>
+
+                        </ul>
+                    <!--<form  action="" method="POST">
                     <input class="input" type="text" autocomplete="off" name="email" placeholder="E-mail">
                     <input onclick="resetSenha()" class="input" type="password" autocomplete="off" name="senha" placeholder="Senha">
                        <button class="botao" id="entrar" type="submit">Entrar</button>
                         <a><span>Esqueci minha senha</span></a>
-                    </form>
+                    </form>-->
                 </div>
         </div>
         <div id="cart">
@@ -55,7 +67,7 @@
                     <span>Itens</span>
                  </div>
         </div>
-    </div><!--FIM DO TOPOBOX-->
+    </div><!--FIM DO ACCOUNT BOX-->
         <div id="barra_pesquisa" >
             <input id="search-topo" type="text" autocomplete="off"  name="search" placeholder="Pesquisar">
             <button type="button" class="botao" id="buscar" ></button>
@@ -70,8 +82,36 @@
          <a class="categoria" href="#">Decoração</a>
      </nav>
 </div>
-
 </div><!--FIM DO TOPO -->
-    <div class="corpo"></div>
+<!-- Modal Login -->
+<div class="modal fade" id="loginModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Acesse Sua Conta</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" autocomplete="off" class="form-control icone-email" id="email" placeholder="E-mail">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" onclick="resetSenha()" autocomplete="off" class="form-control icone-senha" name="senha" id="senha" placeholder="Senha">
+                    </div>
+                    <button type="submit" class="input btn-block btn-in"><span class="icone-botao"></span> Login</button>
+                </form>
+            </div>
+                <div class="modal-footer">
+                    <p>Not a member? <a href="#">Sign Up</a></p>
+                    <p>Forgot <a href="#">Password?</a></p>
+                </div>
+            </div>
+
+    </div>
+</div>
+
+<div class="corpo"></div>
 </body>
 </html>
