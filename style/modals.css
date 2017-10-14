@@ -1,0 +1,74 @@
+/*MODAL LOGIN*/
+.modal-content{
+    background: url("../img/darksign1.jpg") no-repeat;
+    background-size: cover;
+    color: #cbcbcb;
+    margin: auto;
+    top:110px;
+    height: 400px;
+}
+.modal-content h4{
+    margin: auto;
+}
+.modal-header{
+    height:60px;
+}
+.modal-body{
+    height: 250px;
+}
+.modal-footer{
+    border:none;
+}
+button.close{
+    color:white;
+    opacity: 1;
+}
+.btn-in{
+    font-family: Chiller regular;
+    font-size:42px;
+    padding-left: 40px;
+    text-align: center;
+    background-color: #70460a;
+
+}
+.btn-in:hover{
+    color: #ff1313;
+    background-color: #935a0f;
+}
+.btn-in:active{
+    background-color: #523307;
+    color:#e51111;
+    transform: translateY(1px);
+    box-shadow: 0 0 2px gray;
+
+}
+.icone-email{
+    background: url(../img/icon/soul_of_the_old_demon_king-dks3.png ) no-repeat left;
+    background-size: contain;
+}
+.icone-senha{
+    background: url(../img/icon/dragoneye.jpg) no-repeat left;
+    background-size: contain;
+}
+.icone-botao{
+}
+#loginModal .form-group input[type=text],
+#loginModal .form-group input[type=password]{
+    padding-left: 40px;
+    color:white;
+    opacity: 0.87;
+    border:2px groove orangered;
+
+}
+#loginModal .form-group input::-webkit-input-placeholder{
+    text-align: center;
+    color:white;
+    opacity: 0.8;
+}
+
+
+#loginModal .form-group input:focus::-webkit-input-placeholder{
+    opacity: 0;
+    background-color:white;
+}
+
