@@ -7,6 +7,7 @@
  */
 
 require_once('../view/head.html');
+require_once('../view/slide.html');
 if(isset($_REQUEST['email'])){
     $email = $_REQUEST['email'];
     echo "<script>alert('" . $email . "')</script>";

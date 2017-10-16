@@ -1,0 +1,13 @@
+/*WIDTH PADRÃO 980*/
+
+#slide-box{
+    margin:0 auto;
+    position: relative;
+    top:200px;
+    width:980px;
+    height:300px;
+    border:1px solid black;
+
+
+
+}
