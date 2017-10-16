@@ -67,7 +67,7 @@
     border:1px solid white;
     border-radius:2px;
     transition: visibility 0.2s 0.7s;
-    -webkit-transition: visibility 0.2s 0.7s;
+    -webkit-transition: visibility 0.2s 1.3s;
     transition-timing-function:ease-in;
     -webkit-transition-timing-function:ease-in;
 }

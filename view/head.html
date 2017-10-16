@@ -2,47 +2,47 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="pragma" content="no-cache">
     <!--IMPORTS-->
         <!-- BOOTSTRAP-->
-            <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
-            <script  src="bootstrap/jquery-3.1.1.min.js"></script>
-            <script  src="bootstrap/bootstrap.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap.css">
+            <script  src="../bootstrap/jquery-3.1.1.min.js"></script>
+            <script  src="../bootstrap/bootstrap.min.js"></script>
         <!--normalize-->
-            <link rel="stylesheet" href="style/normalize.css">
-            <link rel="stylesheet" href="style/resets.css">
+            <link rel="stylesheet" href="../style/normalize.css">
+            <link rel="stylesheet" href="../style/resets.css">
         <!--CSS-->
-             <link rel="stylesheet" type="text/css" href="style/index.css">
-             <link rel="stylesheet" type="text/css" href="style/fonts.css">
-            <link rel="stylesheet" type="text/css" href="style/modals.css">
+             <link rel="stylesheet" type="text/css" href="../style/head.css">
+             <link rel="stylesheet" type="text/css" href="../style/fonts.css">
+            <link rel="stylesheet" type="text/css" href="../style/modals.css">
         <!--JS-->
-             <script  src="script/Myscript.js"></script>
+             <script  src="../script/Myscript.js"></script>
 
     <title>SOULSTORE - A loja do Dark Souls</title>
-    <link rel="icon" href="img/icon/icon.jpg" type="icon">
+    <link rel="icon" href="../img/icon/icon.jpg" type="icon">
 </head>
 <body>
 <div class="topo">
    <div id="superior">
     <div id="box_titulo">
-       <a href="index.html" class="link">
+       <a href="head.html" class="link">
            <h1 class="titulo">SOULSTORE</h1>
            <h2 class="subtitulo"> A loja do Dark Souls</h2>
        </a>
     </div>
     <div id="account_box">
        <div id="account">
-            <img class="image_account" src="img/icon/if_Customers_Filled_white.png" alt="Login Account">
+            <img class="image_account" src="../img/icon/if_Customers_Filled_white.png" alt="Login Account">
                  <div class="arrow-account"  href="#"></div>
                     <div class="box-login">
                         <ul>
-                            <p class="item-login" id="welcome">Bem vindo, The chosen one !</p>
-                            <li class="list">
-                                <a id="minha_conta" data-toggle="modal" class="item-login" href="#loginModal" >Minha Conta</a>
+                            <li class="item-topo list" id="welcome">Bem vindo, The chosen one !</li>
+                            <li class="list-inicio-login">
+                                <a id="minha_conta" data-toggle="modal" class="item-topo list" href="#loginModal" >Minha Conta</a>
                             </li>
-                            <li     class="list">
-                                <a id="meus_pedidos" class="item-login">Meus Pedidos</a>
+                            <li class="list-inicio-login">
+                                <a id="meus_pedidos" class="item-topo list">Meus Pedidos</a>
                             </li>
 
                         </ul>
@@ -55,17 +55,12 @@
                 </div>
         </div>
         <div id="cart">
-                <img class="image_account" src="img/icon/if_Asset_21.png" alt="shop cart">
+                <img class="image_account" onclick="showContador()" src="../img/icon/if_Asset_21.png" alt="shop cart">
                  <span class="legenda" id="legend_image_cart">Carrinho de Compras</span>
                 <div class="box-cart">
-                    <ul>
-                        <li>Meu Carrinho</li>
-                    </ul>
+                    <p class="cart-item" id="contador">00</p>
+                    <span class="cart-item">itens</span>
                 </div>
-                 <div id="box_contador">
-                    <span>00</span>
-                    <span>Itens</span>
-                 </div>
         </div>
     </div><!--FIM DO ACCOUNT BOX-->
         <div id="barra_pesquisa" >
@@ -83,6 +78,7 @@
      </nav>
 </div>
 </div><!--FIM DO TOPO -->
+
 <!-- Modal Login -->
 <div class="modal fade" id="loginModal" role="dialog">
     <div class="modal-dialog">
@@ -95,23 +91,23 @@
             <div class="modal-body" style="padding:40px 50px;">
                 <form role="form">
                     <div class="form-group">
-                        <input type="text" autocomplete="off" class="form-control icone-email" id="email" placeholder="E-mail">
+                        <input type="text" name="email" autocomplete="off" class="form-control icone-email" id="email" placeholder="E-mail">
                     </div>
                     <div class="form-group">
                         <input type="password" onclick="resetSenha()" autocomplete="off" class="form-control icone-senha" name="senha" id="senha" placeholder="Senha">
                     </div>
-                    <button type="submit" class="input btn-block btn-in"><span class="icone-botao"></span> Login</button>
+                    <button type="submit" class="input btn-block btn-in">Login</button>
+                    <a href="#" class="recoverSenha"><span>Esqueci Minha Senha</span></a>
                 </form>
             </div>
                 <div class="modal-footer">
-                    <p>Not a member? <a href="#">Sign Up</a></p>
-                    <p>Forgot <a href="#">Password?</a></p>
+                    <button class="botao btn-in createAccount">Crie uma Conta </button>
+
                 </div>
             </div>
 
     </div>
 </div>
-
 <div class="corpo"></div>
 </body>
 </html>

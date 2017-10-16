@@ -71,17 +71,18 @@ body{
 	display: block;
 	width: 180px;
 	height:60px;
-	position: absolute;
+	margin: 0 auto;
+	position: relative;
 	top:20px;
-	right: 150px;
-
+	left: 450px;
+	/*right:130px;*/
 }
 #account_box > div{
 	display: inline-block;
 	position: relative;
 	width: 60px;
 	height:60px;
-	margin-right: 15px;
+	margin-right:15px;
 }
 .image_account{
 	display:block;
@@ -92,9 +93,8 @@ body{
 	height:40px;
 	cursor: pointer;
 }
-#account_box  img:active{
-	opacity: 0.8;
-
+#account img:active{
+	opacity: 0.75;
 }
 .arrow-account{
 	display: block;
@@ -106,28 +106,13 @@ body{
 	background: url("../img/icon/if_arrow_sans_down_white16.png") no-repeat left;
 	cursor: pointer;
 }
+#cart img:active{
+	filter:invert(100%);
+}
+#cart img:hover{
+	opacity: 0.75;
+}
 
-/*BOX CONTADOR DE ITENS */
-#box_contador{
-	display:none;
-	position:absolute;
-	top:0;
-	left:50px;
-	padding: 12px 2px 0 ;
-	width:40px;
-	height: 58px;
-	line-height: 0.9;
-}
-#box_contador span{
-	color:greenyellow;
-}
-#box_contador span:first-child{
-	font-size: 30px;
-}
-#box_contador span:last-child {
-	font-size: 16px;
-	font-weight: bold;
-}
 
 /*BARRA DE PESQUISA*/
 #barra_pesquisa{
@@ -190,13 +175,14 @@ body{
 	background-color: #252525;
 }
 
-/*ARROW HOVER BOX LOGIN*/
+/*ARROW HOVER BOX LOGIN AND CART*/
 #account:hover .box-login{
 	display: block;
 }
 #account:hover .arrow-account{
 	opacity:0.5;
 }
+
 
 /*BOX LOGIN*/
 .box-login {
@@ -209,12 +195,16 @@ body{
 	z-index: 1;
 	cursor: pointer;
 	background-color: rgba(25, 25, 25, 0.95);
-	border: 1px solid rgba(42,42,42);
+	border: 1px solid rgb(42,42,42);
 	border-radius:2px;
 }
-.item-login {
+.item-topo {
 	font-family: optimusPriceps;
 	font-size: 12px;
+	color:white;
+}
+.item-topo:hover{
+	text-decoration: underline;
 	color:white;
 }
 #welcome{
@@ -225,15 +215,13 @@ body{
 	top:5px;
 	color: white;
 }
-a.item-login{
+.list-inicio-login a.item-topo{
 	display: inline-block;
+	position: relative;
+	top:10px;
 	margin-left:30px;
 	margin-bottom: 10px;
 	padding-left: 25px;
-}
-a.item-login:hover{
-	text-decoration: underline;
-	color:white;
 }
 #minha_conta{
 	background: url(../img/icon/if_Customers_Filled_white.png) no-repeat;
@@ -325,6 +313,32 @@ a.item-login:hover{
 /*BOX CART*/
 .box-cart{
 	display: none;
+	width:100px;
+	height:70px;
+	position: absolute;
+	right:0;
+	top:55px;
+	line-height:0.5;
+	color:greenyellow;
+	text-align: center;
+}
+
+/*CONTADOR DE ITENS */
+.cart-item{
+	margin:10px 3px 3px 30px;
+	font-size: 32px;
+}
+span.cart-item{
+	font-family: Consolas,sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+	font-variant:small-caps;
+}
+.box-cart a{
+	position: relative;
+	top:15px;
+	background-color: rgba(25, 25, 25, 0.95);
+	border: 1px solid rgb(42,42,42);
 }
 #legend_image_cart{
 	display: block;
@@ -375,10 +389,10 @@ a.categoria:hover{
 .corpo{
 	position: relative;
 	margin:auto;
-	top:0px;
+	top:0;
 	right: 0px;
 	width: 980px;
-	height: 1300px;
+	height: 2000px;
 	/*background: transparent url(../img/artorias_wall.jpg) no-repeat bottom left ;*/
 	z-index: -1;
 	border:3px solid white;
