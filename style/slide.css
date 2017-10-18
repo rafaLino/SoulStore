@@ -1,13 +1,64 @@
 /*WIDTH PADRÃO 980*/
-
+*{
+    box-sizing: border-box;
+}
 #slide-box{
-    margin:0 auto;
+    margin:auto;
     position: relative;
     top:200px;
-    width:980px;
+    max-width:980px;
     height:300px;
-    border:1px solid black;
+    border:1px solid rgba(0, 0, 0, 0.71);
+}
 
+.imagens{
+    display: none;
+}
+img{
+    width:100%;
+    height:300px;
+}
 
+.passador{
+    display:block;
+    width: 100px;
+    height:150px;
+    position:absolute;
+    top:30%;
+    font-size:42px;
+    font-weight: bold;
+    Color: white;
+    padding-top: 50px;
 
+}
+.direita{
+    right:0;
+}
+.esquerda{
+    left:0;
+}
+.arrows{
+    display: none;
+    width:40px;
+    text-align: center;
+    border-radius:4px;
+    cursor:pointer;
+}
+#proximo{
+    position: relative;
+    left:60px;
+    padding-right: 10px;
+}
+#anterior{
+
+}
+
+.esquerda:hover #anterior{
+    display:block;
+    background:rgba(0,0,0,0.6);
+}
+
+.direita:hover #proximo{
+    display:block;
+    background:rgba(0,0,0,0.6);
 }
