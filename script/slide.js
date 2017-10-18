@@ -8,8 +8,9 @@
             anterior = document.getElementById("anterior");
             id = setTimeout(automatic,4000);
             proximo.onclick = function(){
-                    automatic();
-                    clearTimeout(id);
+                clearTimeout(id);
+                automatic();
+
             };
             anterior.onclick = function() {
                 index-=2;
