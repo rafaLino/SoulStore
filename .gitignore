@@ -386,3 +386,9 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/git,windows,composer,phpstorm,intellij,sublimetext
+.idea/deployment.xml
+.idea/modules.xml
+.idea/php.xml
+*.iml
+*.idea/vcs.xml
+*.properties
