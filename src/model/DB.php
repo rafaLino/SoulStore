@@ -6,7 +6,6 @@
  * Time: 20:56
  */
 
-
 namespace src\model;
 class DB
 {
