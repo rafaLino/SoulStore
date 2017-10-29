@@ -1,6 +1,8 @@
 {
-    "psr-0" : {
-        "src\\" : "src"
+    "autoload":{
+      "psr-4": {
+        "src\\": "src"
+      }
     },
     "require": {
     
