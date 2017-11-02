@@ -18,7 +18,8 @@ class DB
                 try {
                     $this->file = fopen(__DIR__."/../../db.properties", 'r');
                 }catch (\Exception $e) {
-                    echo "arquivo não aberto";
+                    echo $e->getMessage();
+
                 }
                     $server = $this->getPropertie('servername');
                     $user = $this->getPropertie('user');
@@ -64,12 +65,12 @@ class DB
 
 
         private function getPropertie($string):string{
-            while(!feof($this->file)){ //enquanto existir linhas no doc
+            while(!feof($this->file)){ //enquanto existir linhas no file
                 $line = fgets($this->file);//pega a linha
                 if(substr_count($line,$string)>0){ break;} //se na linha existir a string passada como parametro
             }
-            if (!is_bool(strpos($line, ':'))) //se encontrar ":" na linha;
-                //retorna string tomando a posição do ":" como inicio até o final da linha,retirando espaços
-                return trim(substr($line, strpos($line,":")+strlen(":")));
+            if (!is_bool(strpos($line, '='))) //se encontrar "=" na linha;
+                //retorna string tomando a posição do "=" como inicio até o final da linha,retirando espaços
+                return trim(substr($line, strpos($line,"=")+strlen("=")));
     }
 }
