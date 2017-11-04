@@ -21,7 +21,7 @@ class ValidaConta {
 
             }
 
-    public function setEmail($email){
+    public function Email($email){
             $email = strtolower($email);// lower case
                 if($this->validarLogin($email))
                 $this->conta->setEmail($email);
@@ -30,7 +30,7 @@ class ValidaConta {
             return true;
         }
 
-        public function setCpf($cpf){
+        public function Cpf($cpf){
             if($this->validarCpf($cpf))
                 $this->conta->setCpf($cpf);
             else
@@ -43,7 +43,7 @@ class ValidaConta {
      * @return bool
      * Aceita caracteres alpha numéricos
      */
-        public function setNome($nome){
+        public function Nome($nome){
             if(preg_match("/[^a-zA-Zà-úÁ-ú0-9]/",$nome)===1){
                 return false;
             }
@@ -58,7 +58,7 @@ class ValidaConta {
      * @param $senha
      * @return bool
      */
-        public function setSenha($senha){
+        public function Senha($senha){
             if(preg_match("/([^A-Za-z0-9@])/",$senha)===1|| sizeof($senha)< 6){
                 return false;
             }
@@ -68,14 +68,14 @@ class ValidaConta {
         }
 
     /**
-     * @param array ...$param rua,nº,bairro,cidade,estado
+     * @param array $parametros: rua,nº,bairro,cidade,estado
      */
-        public function setEndereco(...$param){
-                $string = implode(",",$param);
+        public function Endereco(...$parametros){
+                $string = implode(",",$parametros);
             $this->conta->setEndereco($string);
         }
 
-        public function setTelefone($telefone){
+        public function Telefone($telefone){
                if(preg_match("/([^0-9 )(-])/",$telefone)==1){
                    return false;
                }

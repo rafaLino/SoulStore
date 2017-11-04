@@ -15,11 +15,10 @@ class DAO_Conta implements DAO
 
     public function insert($conta){
         $this->connection = DB::getInstance()->getConnection();
-        $sql = 'INSERT INTO USUARIOS(login, nome, email, tipo, ativo, senha) VALUES( ?) ';
+        $sql = 'COMANDO SQL';
         $statement = $this->connection->prepare($sql);
-        /**
-         * TODO: do connections...
-        */
+        $statement->execute();
+        DB::getInstance()->shutdown(); // disconnect
     }
 
     function delete($conta)

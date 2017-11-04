@@ -13,16 +13,15 @@ use src\model\DAO_Conta;
 
 class CadastroController
 {
-        private $conta = null;
-    public function __construct($conta){
-        if ($conta = null)
-            $this->conta = $conta;
-
-    }
-            public function cadastrar(){
+               public function cadastrar($conta){
                 $daoConta = new DAO_Conta();
-                $daoConta->insert($this->conta);
+                $daoConta->insert($conta);
+
+
+
             }
+
+
 
 
 }

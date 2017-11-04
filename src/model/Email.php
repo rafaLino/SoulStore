@@ -22,10 +22,25 @@ abstract  class Email {
     * @see search for \SplEnum in php.net
    */
     public static function getConstants() {
+        /** se $constCacheArray null, inicia array*/
         if (self::$constCacheArray === null) self::$constCacheArray = array();
+         /**
+          * get_called_class() retorna nome da classe que chamou o método estático.
+          */
         $calledClass = get_called_class();
+        /**
+         * retorna true se a key passada como parametro existe no array
+         * no caso: lê-se 'se não existir a key no array $constCacheArray'.
+        */
         if (!array_key_exists($calledClass, self::$constCacheArray)) {
+            /**
+             * Instancia de objeto ReflectionClass().
+             * ReflectionClass retorna todas as informações da classe passada como parametro
+             */
             $reflect = new \ReflectionClass($calledClass);
+            /**
+             * método getConstants retorna array contendo as constantes da classe;
+             */
             self::$constCacheArray[$calledClass] = $reflect->getConstants();
         }
         return self::$constCacheArray[$calledClass];
