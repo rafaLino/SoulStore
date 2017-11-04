@@ -88,7 +88,4 @@ class Cartao
 
     }
 
-    public function validarCartao(){
-
-    }
 }

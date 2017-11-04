@@ -11,4 +11,6 @@ namespace src\model;
 
 class Administrador extends Conta{
 
+       public $clientes = array('não pode/deveria');
+
 }

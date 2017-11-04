@@ -46,4 +46,20 @@ class Carrinho{
         $this->valorTotal = $valorTotal;
     }
 
+    /**
+     * @return Pagamento
+     */
+    public function getPagamento():Pagamento
+    {
+        return $this->pagamento;
+    }
+
+    /**
+     * @param mixed $pagamento
+     */
+    public function setPagamento($pagamento)
+    {
+        $this->pagamento = $pagamento;
+    }
+
 }

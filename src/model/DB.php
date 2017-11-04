@@ -43,7 +43,6 @@ class DB
                         throw new \Exception("No Connection");
                     }
                     $this->clients++;
-                    echo "connected!";
                     return $this->connection;
                 }
 
@@ -51,7 +50,7 @@ class DB
                     $this->clients--;
                     if($this->clients>0){return;}
                     try{
-                        mssql_close($this->connection);
+                        $this->connection=null;
                         DB::$instance = null;
                         $this->connection =null;
                         echo"Connection Closed";

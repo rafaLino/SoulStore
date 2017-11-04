@@ -53,10 +53,4 @@ class Pagamento
 
     }
 
-    public function pagarBoleto(){
-
-    }
-    public function pagarCartao(){
-
-    }
 }

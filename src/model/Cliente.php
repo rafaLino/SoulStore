@@ -10,15 +10,11 @@ namespace src\model;
 
 
 class Cliente extends Conta{
-        private $ativado = true;
-
-
-
-
-
 
     public function desativar(){
-
+            if($this->isAtivo()){
+                $this->ativo = false;
+            }
         }
 
 }

@@ -9,6 +9,7 @@
     max-width:980px;
     height:300px;
     border:1px solid rgba(0, 0, 0, 0.71);
+    cursor:pointer;
 }
 
 .imagens{
@@ -43,6 +44,10 @@ img{
     text-align: center;
     border-radius:4px;
     cursor:pointer;
+    color:white;
+}
+.arrows:hover{
+   color: #a0a0a0;
 }
 #proximo{
     position: relative;
@@ -55,7 +60,7 @@ img{
 
 .esquerda:hover #anterior{
     display:block;
-    background:rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.6);
 }
 
 .direita:hover #proximo{
