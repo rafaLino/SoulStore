@@ -10,24 +10,24 @@ namespace src\model;
 
 class FactoryConta
 {
-    const Administrador = 0;
-    const Cliente = 1;
+     const ADMINISTRADOR = 0;
+     const CLIENTE = 1;
+
     /**
-     * FactoryConta verifica as constantes definidas e instancia classe conforme parêmetro.
-     * @param $type
+     * FactoryConta verifica as constantes definidas e instancia classe conforme parâmetro.
+     * @param $constant
      * @return Conta
-     * @default cliente
      * @note: Instancia Apenas Classes com  o mesmo namespace que FactoryConta
      */
-        public static function construct($type){
-            $class = get_called_class(); // pega FactoryConta
-            $reflect = new \ReflectionClass($class); // Recebe todas as informações de FactoryConta
+        public static function construct($constant):Conta{
+            $reflect = new \ReflectionClass(get_called_class()); // Recebe todas as informações de FactoryConta
             $className = $reflect->getNamespaceName()."\\"; //Prepara $className com namespace;
-            $keys = array_keys($reflect->getConstants()); // recebe valores das keys do array de constantes;
+            $array = $reflect->getConstants(); //recebe array de constantes;
+            $key = array_keys($array);// recebe key do array
            try{
-                 foreach ($keys as $var) {
-                    if (strcasecmp($type, $var) == 0){ //quando achar o tipo correspondente à constante
-                        $className .=$var; // concantena o tipo junto ao namespace.
+                 foreach($array as $var) {
+                    if ($constant == $var ){ //quando achar o tipo correspondente à constante
+                        $className .=$key[$var]; // concantena o tipo junto ao namespace.
                         break;
                     }
                  }
@@ -36,8 +36,6 @@ class FactoryConta
                echo "Tipo de Conta inválida";
                die;
               }
-
-            return new $className(); //instancia a classe
-
+            return new $className; //retorna instancia a classe
         }
 }

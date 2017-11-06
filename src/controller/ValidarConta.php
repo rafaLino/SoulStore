@@ -8,17 +8,14 @@
 
 namespace src\controller;
 
-use src\model\FactoryConta;
+use src\model\Conta;
 use src\model\Email;
-class ValidaConta {
+class ValidarConta {
 
         private $conta= null;
 
-            public function __construct($type="Cliente")
-            {
-
-                    $this->conta = FactoryConta::construct($type);
-
+            public function __construct(Conta $conta){
+                    $this->conta = $conta;
             }
 
     public function Email($email){
@@ -165,7 +162,7 @@ class ValidaConta {
         return $valid;
     }
 
-    public function getConta(){
+    public function getClass(){
         return $this->conta;
     }
 }
