@@ -8,20 +8,21 @@
 
 namespace src\controller;
 
-
+use src\model\Conta;
 use src\model\DAO_Conta;
+use src\model\DAO_Produto;
 
-class CadastroController
-{
-               public function cadastrar($conta){
+class CadastroController{
+               public function cadastrarConta(Conta $conta){
                 $daoConta = new DAO_Conta();
-                $daoConta->insert($conta);
-
-
+                return $daoConta->insert($conta);
 
             }
 
-
+            public function cadastrarProduto(Produto $produto){
+                    $daoProduto = new DAO_Produto();
+                    return $daoProduto->insert($produto);
+            }
 
 
 }

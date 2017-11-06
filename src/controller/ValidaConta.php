@@ -14,7 +14,7 @@ class ValidaConta {
 
         private $conta= null;
 
-            public function __construct($type='cliente')
+            public function __construct($type="Cliente")
             {
 
                     $this->conta = FactoryConta::construct($type);
@@ -165,7 +165,7 @@ class ValidaConta {
         return $valid;
     }
 
-    public function getClass(){
+    public function getConta(){
         return $this->conta;
     }
 }
