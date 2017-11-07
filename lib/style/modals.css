@@ -1,6 +1,6 @@
 /*MODAL LOGIN*/
-.modal-content{
-
+.login-modal{
+    background: url(../img/darksign1.jpg) no-repeat;
     background-size: cover;
     color: #000000;
     margin: auto;
@@ -28,16 +28,17 @@ button.close{
     font-size:42px;
     padding-left: 40px;
     text-align: center;
-    background-color: #70460a;
+    background-color: rgba(229, 17, 17, 0.73);
 
 }
 .btn-in:hover{
-    color: #000000;
-    background-color: #935a0f;
+    color: #ffffff;
+    background-color: #2253ff;
+
 }
 .btn-in:active{
-    background-color: #523307;
-    color:#e51111;
+    background-color: #000000;
+    color: #ffffff;
     transform: translateY(1px);
     box-shadow: 0 0 2px gray;
 
@@ -54,7 +55,7 @@ button.close{
 #loginModal .form-group input[type=text],
 #loginModal .form-group input[type=password]{
     padding-left: 40px;
-    color:black;
+    color:white;
     opacity: 0.87;
     border:2px groove orangered;
 
@@ -74,9 +75,16 @@ button.close{
     font-size: 11px;
     color:#3278bf;
     text-decoration: none;
-    padding-left:10px;
+    position: absolute;
+    right:50px;
+    margin:0 auto;
 }
-
+.info{
+    color:white;
+    position: absolute;
+    bottom:80px;
+    left:60px;
+}
 .createAccount{
     width:300px;
     height:40px;
@@ -84,4 +92,37 @@ button.close{
     margin-left:35px;
     padding-left: 25px;
     padding-bottom: 10px;
+    bottom:20px;
+}
+
+/*MODAL SENHA*/
+.senha-modal{
+    height: 90px;
+}
+.senha-modal-header{
+    height: 35px;
+}
+#confirmEmail{
+    display: inline-block;
+    position: absolute;
+    top:12px;
+    width: 350px;
+}
+.enviar{
+    margin:0 auto;
+    display: block;
+    top:-2px;
+    left:140px;
+    width: 130px;
+    height: 30px;
+    background-color: #4c8bff;
+    box-shadow: 0 2px grey;
+}
+.enviar:hover{
+    background-color: #3a6ac1;
+}
+.enviar:active{
+    transform: translateY(2px);
+    box-shadow: 0 1px #666;
+    background-color:#3a6ac1;
 }

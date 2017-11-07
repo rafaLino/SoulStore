@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
     <!--IMPORTS-->
         <!-- BOOTSTRAP-->
             <link rel="stylesheet" type="text/css" href="../../lib/bootstrap/bootstrap.css">
@@ -71,35 +71,55 @@
      </nav>
 </div>
 </div><!--FIM DO TOPO -->
-
 <!-- Modal Login -->
 <div class="modal fade" id="loginModal" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content">
+        <div class="modal-content login-modal">
             <div class="modal-header" style="padding:35px 50px;">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4>Acesse Sua Conta</h4>
             </div>
             <div class="modal-body" style="padding:40px 50px;">
-                <form role="form">
+                <form role="form" method="post">
                     <div class="form-group">
                         <input type="text" name="email" autocomplete="off" class="form-control icone-email" id="email" placeholder="E-mail">
                     </div>
                     <div class="form-group">
                         <input type="password" onclick="resetSenha()" autocomplete="off" class="form-control icone-senha" name="senha" id="senha" placeholder="Senha">
                     </div>
-                    <button type="submit" class="input btn-block btn-in">Login</button>
-                    <a href="#" class="recoverSenha"><span>Esqueci Minha Senha</span></a>
+                    <button type="submit" name="botaologar" class="input btn-block btn-in">Login</button>
+                    <a data-toggle="modal" data-dismiss="modal"  href="#recoverSenha" class="recoverSenha"><span>Esqueci Minha Senha</span></a>
+                    <input type="hidden" name="loginform">
                 </form>
             </div>
                 <div class="modal-footer">
-                    <button class="botao btn-in createAccount">Crie uma Conta </button>
+                    <span class="info"> Ainda Não Possui uma Conta?</span>
+                    <button name="botaoCriar" class="botao btn-in createAccount">Criar Conta</button>
 
                 </div>
             </div>
 
     </div>
+</div><!--FIM DO MODAL LOGIN-->
+<div class="modal fade" id="recoverSenha" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content senha-modal">
+            <div class="modal-header senha-modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Enviaremos uma nova senha ao seu E-mail de Cadastro</h4>
+            </div>
+            <div class="modal-body senha-modal-body">
+                <form action="" method="post">
+                    <input type="text" name="confirmEmail" autocomplete="off" class="form-control" id="confirmEmail" placeholder="Confirme seu E-mail">
+                    <input type="submit" class="botao enviar"  value="Enviar" name="recoverSenha">
+                    <input type="hidden" name="recSenhaForm">
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div>
+
 </body>
 </html>

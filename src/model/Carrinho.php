@@ -13,7 +13,7 @@ class Carrinho{
 
         private $date;
         private $valorTotal;
-        private $pagamento;//tipo PAGAMENTO
+        private $pagamento = null;//tipo PAGAMENTO
     /**
      * @return mixed
      */
@@ -29,7 +29,6 @@ class Carrinho{
     {
         $this->date = $date;
     }
-
     /**
      * @return mixed
      */
