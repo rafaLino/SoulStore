@@ -39,7 +39,7 @@
                         <ul>
                             <li class="item-topo list" id="welcome">Bem vindo, The chosen one !</li>
                             <li class="list-inicio-login list">
-                                <a id="minha_conta" data-toggle="modal" class="item-topo" href="#loginModal" >Minha Conta</a>
+                                <a id="minha_conta" data-toggle="modal" class="item-topo" onclick="myAccount()" href="#loginModal" >Minha Conta</a>
                             </li>
                             <li class="list-inicio-login list">
                                 <a id="meus_pedidos" class="item-topo ">Meus Pedidos</a>
@@ -54,23 +54,22 @@
                     <p class="cart-item" id="contador">00</p>
                     <span class="cart-item">itens</span>
                 </div>-->
-        </div>
-    </div><!--FIM DO ACCOUNT BOX-->
+        </div><!--FIM DO ACCOUNT BOX-->
+    </div> <!--FIM  DO SUPERIOR-->
         <div id="barra_pesquisa" >
             <input id="search-topo" type="text" autocomplete="off"  name="search" placeholder="Pesquisar">
             <button type="button" class="botao" id="buscar" ></button>
         </div>
-</div><!--FIM DO TOPO SUPERIOR-->
-<div id="inferior">
-     <nav id="nav">
-         <a class="categoria" href="#">Camisas</a>
-         <a class="categoria" href="#">Acessórios</a>
-         <a class="categoria" href="#">Livros</a>
-         <a class="categoria" href="#">Colecionáveis</a>
-         <a class="categoria" href="#">Decoração</a>
-     </nav>
-</div>
-</div><!--FIM DO TOPO -->
+    <div id="inferior">
+         <nav id="nav">
+             <a class="categoria" href="#">Camisas</a>
+             <a class="categoria" href="#">Acessórios</a>
+             <a class="categoria" href="#">Livros</a>
+             <a class="categoria" href="#">Colecionáveis</a>
+             <a class="categoria" href="#">Decoração</a>
+         </nav>
+    </div><!--FIM DO INFERIOR -->
+</div><!--FIM DO TOPO-->
 <!-- Modal Login -->
 <div class="modal fade" id="loginModal" role="dialog">
     <div class="modal-dialog">

@@ -7,7 +7,7 @@ use src\model\FactoryConta;
 
 
 //require_once ("DB.php");
-require("../../vendor/autoload.php");
+
 
 
 
