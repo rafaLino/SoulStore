@@ -48,6 +48,7 @@ body{
 	position: fixed;
 	background-color: rgba(25, 25, 25, 0.95);
 	/*background-color: rgba(0,0,0,0.6);*/
+	z-index:10;
 
 }
 #superior {

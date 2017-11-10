@@ -15,7 +15,7 @@
         <!--CSS-->
              <link rel="stylesheet" type="text/css" href="../../lib/style/head.css">
              <link rel="stylesheet" type="text/css" href="../../lib/style/fonts.css">
-            <link rel="stylesheet" type="text/css" href="../../lib/style/modals.css">
+             <link rel="stylesheet" type="text/css" href="../../lib/style/modals.css">
         <!--JS-->
              <script  src="../../lib/script/Myscript.js"></script>
 
@@ -39,7 +39,7 @@
                         <ul>
                             <li class="item-topo list" id="welcome">Bem vindo, The chosen one !</li>
                             <li class="list-inicio-login list">
-                                <a id="minha_conta" data-toggle="modal" class="item-topo" onclick="myAccount()" href="#loginModal" >Minha Conta</a>
+                                <a id="minha_conta" data-toggle="modal" class="item-topo" onclick="myAccount()" href="{{open}}" >Minha Conta</a>
                             </li>
                             <li class="list-inicio-login list">
                                 <a id="meus_pedidos" class="item-topo ">Meus Pedidos</a>
@@ -70,6 +70,13 @@
          </nav>
     </div><!--FIM DO INFERIOR -->
 </div><!--FIM DO TOPO-->
+
+{% block conteudo %}
+
+{% endblock %}
+
+
+
 <!-- Modal Login -->
 <div class="modal fade" id="loginModal" role="dialog">
     <div class="modal-dialog">
@@ -92,12 +99,12 @@
                     <input type="hidden" name="loginform">
                 </form>
             </div>
-                <div class="modal-footer">
-                    <span class="info"> Ainda Não Possui uma Conta?</span>
-                    <button name="botaoCriar" class="botao btn-in createAccount">Criar Conta</button>
+            <div class="modal-footer">
+                <span class="info"> Ainda Não Possui uma Conta?</span>
+                <button name="botaoCriar" class="botao btn-in createAccount">Criar Conta</button>
 
-                </div>
             </div>
+        </div>
 
     </div>
 </div><!--FIM DO MODAL LOGIN-->
@@ -117,7 +124,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 </body>
