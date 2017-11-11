@@ -123,4 +123,12 @@ abstract class Conta
         return $this->ativo;
     }
 
+    public function isAdmin():bool{
+        if($this instanceof Administrador){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

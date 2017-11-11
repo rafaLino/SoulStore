@@ -20,7 +20,7 @@
     border:none;
 }
 button.close{
-    color: #040404;
+    color: #ffffff;
     opacity: 0.8;
 }
 .btn-in{
@@ -52,20 +52,20 @@ button.close{
     background-size: contain;
 }
 
-#loginModal .form-group input[type=text],
-#loginModal .form-group input[type=password]{
+ .form-group input[type=text],
+ .form-group input[type=password]{
     padding-left: 40px;
     color:white;
     opacity: 0.87;
     border:2px groove orangered;
 
 }
-#loginModal .form-group input::-webkit-input-placeholder{
+.form-group input::-webkit-input-placeholder{
     text-align: center;
     color:white;
     opacity: 0.8;
 }
-#loginModal .form-group input:focus::-webkit-input-placeholder{
+.form-group input:focus::-webkit-input-placeholder{
     opacity: 0;
     background-color:white;
 }
@@ -125,4 +125,77 @@ button.close{
     transform: translateY(2px);
     box-shadow: 0 1px #666;
     background-color:#3a6ac1;
+}
+
+.back{
+
+    background-color: #938E78;
+    font-size: 18px;
+}
+.back:hover{
+    border:1px solid #4c8bff;
+    border-radius: 2px;
+}
+.cadastro-modal{
+    height: 320px;
+    top:90px;
+    background: url("../img/dk22.jpg") no-repeat left;
+}
+
+.cadastro-modal-header{
+    border-bottom-style: none;
+}
+
+#junte-se-a-nos{
+    font-family: ringBearer,Verdana, Arial, sans-serif;
+    font-size:30px;
+    font-weight: bold;
+    position: absolute;
+    left:210px;
+    top:20px;
+    color:white;
+    text-shadow: 2px 2px 1px black;
+    border-bottom:1px solid darkorange;
+    width: 220px;
+}
+
+#form-cadastro input[type=text],
+#form-cadastro input[type=password]{
+    margin-top:5px;
+    position: relative;
+    left:50px;
+    width:400px;
+    height: 35px;
+    border-radius:4px;
+    color:black;
+    padding-left: 60px;
+}
+#form-cadastro label{
+    position: relative;
+    top:0;
+    left:110px;
+    z-index:1;
+    border-right:2px solid orangered;
+    width:50px;
+}
+
+#cadastrar_botao{
+    position: relative;
+    margin:auto;
+    top:10px;
+    left:15px;
+    width: 400px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 22px;
+    color:white;
+    background-color: #3a6ac1;
+    box-shadow: 2px 1px 2px black;
+}
+
+#cadastrar_botao:active{
+    transform: TranslateY(2px);
+    box-shadow: 1px 2px 2px black;
+    border:none;
+    outline:none;
 }

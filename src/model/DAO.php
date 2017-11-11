@@ -13,6 +13,6 @@ interface DAO
 {
     function insert($conta);
     function delete($conta);
-    function update($conta,...$args);
+    function update($conta,$args,$values);
     function select($conta,...$args);
 }

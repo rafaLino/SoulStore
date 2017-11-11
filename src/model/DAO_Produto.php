@@ -21,7 +21,7 @@ class DAO_Produto implements DAO
         // TODO: Implement delete() method.
     }
 
-    function update($conta, ...$args)
+    function update($conta, $args,$values)
     {
         // TODO: Implement update() method.
     }

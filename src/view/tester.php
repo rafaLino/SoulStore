@@ -6,7 +6,7 @@ use src\controller\ValidarConta;
 use src\model\FactoryConta;
 
 
-//require_once ("DB.php");
+require_once ("../../vendor/autoload.php");
 
 
 
@@ -19,9 +19,9 @@ use src\model\FactoryConta;
     $valida->Endereco("rua são paulo","2","são paulo","são paulo","sp");
     $valida->Telefone("(11)4444-8888");
 
-    $cadastrar = new CadastroController();
-    $cadastrar->cadastrarConta($pessoa);
-    var_dump($pessoa);
+    echo $pessoa->isAdmin() ? "sim" : "não";
+
+
 
 
 
