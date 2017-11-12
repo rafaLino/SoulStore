@@ -36,6 +36,9 @@
             <img class="image_account" src="../../lib/img/icon/if_Customers_Filled_white.png" alt="Login Account">
                  <div class="arrow-account"  href="#"></div>
                     <div class="box-login">
+                       {% if session.login != null %}
+                        <input type="image" id="logout" src="../../lib/img/icon/if_logout.png" alt="Logout">
+                        {% endif %}
                         <ul>
                             <li class="item-topo list" id="welcome">Bem vindo, The chosen one !</li>
                             <li class="list-inicio-login list">
@@ -73,9 +76,7 @@
 
 {% block conteudo %}
 
-{% endblock %}
-
-
+{% endblock conteudo %}
 
 <!-- Modal Login -->
 <div class="modal fade" id="loginModal" role="dialog">
@@ -101,7 +102,9 @@
             </div>
             <div class="modal-footer">
                 <span class="info"> Ainda Não Possui uma Conta?</span>
-                <button name="botaoCriar" class="botao btn-in createAccount"> <a href="#cadastro" data-toggle="modal"  data-dismiss="modal" class="link">Criar Conta</a></button>
+                <a href="#cadastro" data-toggle="modal"  data-dismiss="modal" class="link">
+                    <button name="botaoCriar" class="botao btn-in createAccount"> Criar Conta</button>
+                </a>
 
             </div>
         </div>
@@ -126,7 +129,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="cadastro" role="dialog">
+<div class="modal animated fade" id="cadastro" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content cadastro-modal">
             <div class="modal-header cadastro-modal-header">

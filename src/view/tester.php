@@ -10,16 +10,13 @@ require_once ("../../vendor/autoload.php");
 
 
 
+$conta = FactoryConta::construct(FactoryConta::ADMINISTRADOR);
+$conta->setNome("Rafael");
 
-    $pessoa = FactoryConta::construct(FactoryConta::ADMINISTRADOR);
-    $valida = new ValidarConta($pessoa);
-    $valida->Cpf('27071657432');
-    $valida->Email('TESTES_TESTE@gmail.com');
-    $valida->Nome("Rafael");
-    $valida->Endereco("rua são paulo","2","são paulo","são paulo","sp");
-    $valida->Telefone("(11)4444-8888");
+var_dump($conta);
 
-    echo $pessoa->isAdmin() ? "sim" : "não";
+
+
 
 
 

@@ -8,7 +8,7 @@
 
 namespace src\model;
 
-abstract class Conta
+ class Conta
 {
     protected $cpf;
     protected $nome;
@@ -70,7 +70,7 @@ abstract class Conta
     /**
      * @return string
      */
-    public function getSenha():string
+    public function getSenha()
     {
         return $this->senha;
     }
@@ -86,7 +86,7 @@ abstract class Conta
     /**
      * @return string
      */
-    public function getEndereco():string
+    public function getEndereco()
     {
         return $this->endereco;
     }
@@ -130,5 +130,19 @@ abstract class Conta
             return false;
         }
     }
+
+    public function __toString():string
+    {
+       $string = array(
+           "nome" => $this->nome,
+            "email" => $this->email,
+            "endereco"=> $this->endereco,
+            "telefone"=> $this->telefone
+       );
+         $stringBuilder=print_r($string);
+
+        return $stringBuilder;
+    }
+
 
 }

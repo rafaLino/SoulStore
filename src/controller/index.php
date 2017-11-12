@@ -6,20 +6,24 @@ use src\model\FactoryConta;
 use src\model\Conta;
 use src\model\Cliente;
 require("../../vendor/autoload.php");
+
 session_start();
-$openConta = array('open'=>"#loginModal");
+$openConta = array(
+    'open'=>"#loginModal",
+    'session'=> $_SESSION
+);
 $loader = new \Twig_Loader_Filesystem( __DIR__."/../view");
 $twig = new \Twig_Environment($loader);
 
 if(isset($_SESSION['login'])){
-     $usuario = $_SESSION['login'];
+    $usuario = (object) $_SESSION['login'];
     if($usuario->isAdmin()){
         $openConta['open']="admin.php";
     }else{
         $openConta['open']="meuCarrinho.php";
     }
-
 }
+
 if(isset($_REQUEST['recsenhaform'])){
    $confirmEmail = $_REQUEST['confirmEmail'];
     $sendEmail = new sendEmail();
@@ -34,7 +38,8 @@ if(isset($_REQUEST['loginform'])){
     $pessoa = $login->buscarEmail($email);
     if($pessoa->getSenha()==$senha){
         $_SESSION['login'] = $pessoa;
-        }
+        header("Location:index.php");
+    }
  }
 
 if(isset($_REQUEST['cadastroform'])){
@@ -53,5 +58,5 @@ if(isset($_REQUEST['cadastroform'])){
     $cadastrar->cadastrarConta($conta);
 
 }
-   echo $twig->render("index.twig", $openConta);
+   echo $twig->render("index.html", $openConta);
 
