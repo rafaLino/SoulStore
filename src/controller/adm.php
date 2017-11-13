@@ -1,7 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Rafael Lino
- * Date: 11/11/2017
- * Time: 23:55
- */
+
+
+require("../../vendor/autoload.php");
+
+$loader = new \Twig_Loader_Filesystem( __DIR__."/../view");
+$twig = new \Twig_Environment($loader);
+
+echo $twig->render("adm.html");

@@ -1,12 +1,64 @@
-{% extends 'head.hmtl' %}
+{% extends 'head.html' %}
 {% block conteudo %}
 <link rel="stylesheet" href="../../lib/style/conteudo_adm.css">
-<div>
-    <!--
-    TODO: DUAS ABAS > PRODUTO E CLIENTE COM AS RESPECTIVAS LISTAS
-    TODO: CAMPO PARA ADIÇÃO DE PRODUTO
-    TODO: CAMPO PARA DESATIVAÇÃO DE PRODUTOS E CLIENTES
-    -->
+<div class="conteudo">
+    <div class="painel">
+        <div class="aba-nav">
+            <h3 id="aba-title-cliente" onclick="showAba('cliente')" class="aba-title active">Clientes</h3>
+            <h3 id="aba-title-produto" onclick="showAba('produto')" class="aba-title">Produtos</h3>
+        </div>
+        <div class="aba">
+            <table id="tabela-cliente" class="table table-striped  table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" >Nome</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Endereço</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">&nbsp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for cliente in clientes %}
+                        <td></td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="aba">
+            <div id="adicionar-produto">
+                <form id="form-adc-produto" action="" method="post">
+                    <input type="text" name="cadastrar-nome-produto" id="cadastrar-nome-produto" placeholder="Nome do Produto">
+                    <input type="text" name="cadastrar-preco-produto"  id="cadastrar-preco-produto" placeholder="Preço do Produto">
+                    <textarea rows="1" name="cadastrar-descricao-produto" id="cadastrar-descricao-produto" placeholder="Descrição"></textarea>
+                    <input type="image"  name="submit-produto" id="submit-produto" src="../../lib/img/icon/if_Plus_206460.png">
+
+                </form>
+            </div>
+
+            <table id="tabela-produto" class="table table-striped table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Preço Unitário</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">&nbsp</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    {% for produto in produtos %}
+                    <td></td>
+                    {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>
 
 {% endblock %}

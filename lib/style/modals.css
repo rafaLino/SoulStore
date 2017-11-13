@@ -12,6 +12,8 @@
 }
 .modal-content h4{
     margin: auto;
+    color:white;
+    font-size: large;
 }
 .modal-header{
     height:60px;

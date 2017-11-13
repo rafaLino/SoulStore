@@ -320,6 +320,16 @@ a.categoria:hover{
 	letter-spacing: 0;
 }
 
+.conteudo{
+	margin: auto;
+	max-width:980px;
+	height: 900px;
+	position: relative;
+	top: 215px;
+	background-color: #2B2B2B;
+	border:2px groove black;
+
+}
 
 
 

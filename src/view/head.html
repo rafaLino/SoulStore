@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<meta http-equiv="Pragma" content="no-cache">-->
+    <meta http-equiv="Pragma" content="no-cache">
     <!--IMPORTS-->
         <!-- BOOTSTRAP-->
             <link rel="stylesheet" type="text/css" href="../../lib/bootstrap/bootstrap.css">
+            <link rel="stylesheet" type="text/css" href="../../lib/bootstrap/bootstrap-theme.min.css">
             <script  src="../../lib/bootstrap/jquery-3.1.1.min.js"></script>
             <script  src="../../lib/bootstrap/bootstrap.min.js"></script>
         <!--normalize-->
@@ -37,12 +38,12 @@
                  <div class="arrow-account"  href="#"></div>
                     <div class="box-login">
                        {% if session.login != null %}
-                        <input type="image" id="logout" src="../../lib/img/icon/if_logout.png" alt="Logout">
+                        <input type="image" name="logout" id="logout" src="../../lib/img/icon/if_logout.png" alt="Logout">
                         {% endif %}
                         <ul>
                             <li class="item-topo list" id="welcome">Bem vindo, The chosen one !</li>
                             <li class="list-inicio-login list">
-                                <a id="minha_conta" data-toggle="modal" class="item-topo" onclick="myAccount()" href="{{open}}" >Minha Conta</a>
+                                <a id="minha_conta" data-toggle="modal" class="item-topo"  href="{{open}}" >Minha Conta</a>
                             </li>
                             <li class="list-inicio-login list">
                                 <a href="meuCarrinho.html" id="meus_pedidos" class="item-topo">Meus Pedidos</a>

@@ -14,7 +14,6 @@ $openConta = array(
 );
 $loader = new \Twig_Loader_Filesystem( __DIR__."/../view");
 $twig = new \Twig_Environment($loader);
-
 if(isset($_SESSION['login'])){
     $usuario = (object) $_SESSION['login'];
     if($usuario->isAdmin()){
@@ -22,6 +21,10 @@ if(isset($_SESSION['login'])){
     }else{
         $openConta['open']="meuCarrinho.php";
     }
+}
+if(isset($_REQUEST['logout'])){
+    $_SESSION['login'] = null;
+
 }
 
 if(isset($_REQUEST['recsenhaform'])){
