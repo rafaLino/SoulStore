@@ -14,11 +14,11 @@ require_once ("../../vendor/autoload.php");
 //$conta->setNome("Rafael");
 
 $conta = FactoryConta::construct(FactoryConta::CLIENTE);
-$conta->setNome("Caique");
-$conta->setEmail("caique@caique.com");
+$conta->setNome("Rafael");
+$conta->setEmail("rafael@rafael.com");
 $conta->setSenha("123456");
-$conta->setTelefone("11235468791");
-$conta->setEndereco("rua da silva");
+$conta->setTelefone("11364589752");
+$conta->setEndereco("rua do rafael");
 $cadastro = new CadastroController();
 $cadastro->cadastrarConta($conta);
 
