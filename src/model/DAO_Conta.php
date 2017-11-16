@@ -14,7 +14,13 @@ class DAO_Conta implements DAO
     private $connection = null;
 
     public function insert($conta){
-         echo "sucesso";
+        $conexao=DB::getInstance()->getConnection();
+        $array = array($email=$conta->getEmail(),$nome=$conta->getNome(),$senha=$conta->getSenha(),
+            $telefone=$conta->getTelefone(),$endereco=$conta->getEndereco());
+        $query = "INSERT INTO conta (email, nome, senha, tefelone, endereco)
+                          VALUES ('$array[0]','$array[1]','$array[2]','$array[3]','$array[4]')";
+        $exec = $conexao->prepare($query);
+        $exec->execute();
     }
 
     function delete($conta)
