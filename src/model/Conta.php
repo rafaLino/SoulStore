@@ -11,12 +11,11 @@ namespace src\model;
  class Conta
 {
 
-    public $nome;
-    public $email;
-    public $senha;
-    public $endereco;
-    public $telefone;
-
+    protected $nome;
+    protected $email;
+    protected $senha;
+    protected $endereco;
+    protected $telefone;
 
 
     /**
@@ -127,12 +126,13 @@ namespace src\model;
      public function convertToArray():array {
          $reflect = new \ReflectionClass(get_called_class()); // Recebe todas as informações de FactoryConta
          $atributos = $reflect->getProperties(); //recebe atributos da classe
+         $array = null;
         try{
              foreach($atributos as $var){ // foreach de atributos
-                   $key = $var->getName(); // recebe nome do atributo como chave
-                   $array[$key] = $this->{$var->getName()};
+                   $key = $var->getName(); // nome do atributo como chave
+                   $array[$key] = $this->{$var->getName()}; //seta array com chave e valor do atributo
              }
- }catch (\Error $e){ //caso erro
+            }catch (\Error $e){ //caso erro
              $e->getCode();
              echo "conversão impossível";
              die;
