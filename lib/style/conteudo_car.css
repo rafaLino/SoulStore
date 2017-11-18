@@ -1,0 +1,9 @@
+.painel{
+    background-color: whitesmoke;
+    margin:30px 5px;
+    position:absolute;
+    top:0;
+    width:99%;
+    height: inherit;
+
+}

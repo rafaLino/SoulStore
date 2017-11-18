@@ -10,29 +10,14 @@ namespace src\model;
 
  class Conta
 {
-    protected $cpf;
-    protected $nome;
-    protected $email;
-    protected $senha;
-    protected $endereco;
-    protected $telefone;
-    protected $ativo = true;
 
-    /**
-     * @return string
-     */
-    public function getCpf()
-    {
-        return $this->cpf;
-    }
+    public $nome;
+    public $email;
+    public $senha;
+    public $endereco;
+    public $telefone;
 
-    /**
-     * @param mixed $cpf
-     */
-    public function setCpf($cpf)
-    {
-        $this->cpf=$cpf;
-    }
+
 
     /**
      * @return string
@@ -70,7 +55,7 @@ namespace src\model;
     /**
      * @return string
      */
-    public function getSenha()
+    public function getSenha():string
     {
         return $this->senha;
     }
@@ -115,13 +100,6 @@ namespace src\model;
         $this->telefone = $telefone;
     }
 
-    /**
-     * @return bool
-     */
-    public function isAtivo(): bool
-    {
-        return $this->ativo;
-    }
 
     public function isAdmin():bool{
         if($this instanceof Administrador){
@@ -130,6 +108,8 @@ namespace src\model;
             return false;
         }
     }
+
+
 
     public function __toString():string
     {
@@ -143,6 +123,22 @@ namespace src\model;
 
         return $stringBuilder;
     }
+
+     public function convertToArray():array {
+         $reflect = new \ReflectionClass(get_called_class()); // Recebe todas as informações de FactoryConta
+         $atributos = $reflect->getProperties(); //recebe atributos da classe
+        try{
+             foreach($atributos as $var){ // foreach de atributos
+                   $key = $var->getName(); // recebe nome do atributo como chave
+                   $array[$key] = $this->{$var->getName()};
+             }
+ }catch (\Error $e){ //caso erro
+             $e->getCode();
+             echo "conversão impossível";
+             die;
+         }
+         return $array;
+     }
 
 
 }

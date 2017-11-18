@@ -1,4 +1,4 @@
-{% extends 'head'%}
+{% extends 'head.html'%}
 {% block conteudo%}
 <link rel="stylesheet" href="../../lib/style/conteudo_car.css">
 <!--
@@ -6,8 +6,33 @@
         TODO: LISTA DE PRODUTOS ADDICIONADOS
         TODO: CAIXA DE CONFIGURAÇÃO DA CONTA
     -->
-<div class="conteudo">
+<div class="conteudo" >
+    <div id="meuCarrinho" class="painel" onload="calcular()">
+        <form action="" method="post">
+            <table id="tabela-carrinho" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Preço Unitário</th>
+                        <th scope="col">Quantidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produto in Car %}
+                        <tr>
+                            <td >{{produto.nome}}</td>
+                            <td class="preco" >{{produto.precoUnit}}</td>
+                            <td onblur="calcular()"><input class="quantidade-prod" value="1" type="number" name="quantidade"> </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+                    <div id="preco-total" > </div>
+                    <input type="submit" class="botao" id="finalizar-compra" name="finalizar-compra" value="Finalizar Compra">
 
+        </form>
+
+    </div>
 
 </div>
 {% endblock %}

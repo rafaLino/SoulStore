@@ -20,6 +20,7 @@
         <!--JS-->
              <script  src="../../lib/script/Myscript.js"></script>
 
+
     <title>SOULSTORE - A loja do Dark Souls</title>
     <link rel="icon" href="../../lib/img/icon/icon.jpg" type="icon">
 </head>
@@ -43,10 +44,10 @@
                         <ul>
                             <li class="item-topo list" id="welcome">Bem vindo, The chosen one !</li>
                             <li class="list-inicio-login list">
-                                <a id="minha_conta" data-toggle="modal" class="item-topo"  href="{{open}}" >Minha Conta</a>
+                                <a id="minha_conta" data-toggle="modal" class="item-topo"  href="{{conta.modal}}" >Minha Conta</a>
                             </li>
                             <li class="list-inicio-login list">
-                                <a href="meuCarrinho.html" id="meus_pedidos" class="item-topo">Meus Pedidos</a>
+                                <a href="../controller/meuCarrinho.php" id="meus_pedidos" class="item-topo">Meus Pedidos</a>
                             </li>
                         </ul>
                 </div>
@@ -79,6 +80,7 @@
 
 {% endblock conteudo %}
 
+
 <!-- Modal Login -->
 <div class="modal fade" id="loginModal" role="dialog">
     <div class="modal-dialog">
@@ -87,6 +89,10 @@
             <div class="modal-header" style="padding:35px 50px;">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4>Acesse Sua Conta</h4>
+                <!-- ALERT DE LOGIN INVÁLIDO -->
+                {% if login == false %}
+                <div class='alert alert-danger' id='errologin' role='alert'><strong>Login Inválido</strong></div>
+                {% endif %}
             </div>
             <div class="modal-body" style="padding:40px 50px;">
                 <form role="form" method="post">

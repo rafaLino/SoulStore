@@ -8,37 +8,46 @@
             <h3 id="aba-title-produto" onclick="showAba('produto')" class="aba-title">Produtos</h3>
         </div>
         <div class="aba">
-            <table id="tabela-cliente" class="table table-striped  table-hover">
+            <table id="tabela-cliente" class="table">
                 <thead class="thead-dark">
-                    <tr>
-                        <th scope="col" >Nome</th>
-                        <th scope="col">E-mail</th>
-                        <th scope="col">Endereço</th>
-                        <th scope="col">Telefone</th>
-                        <th scope="col">&nbsp</th>
-                    </tr>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Endereço</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">&nbsp</th>
+                </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        {% for cliente in clientes %}
-                        <td></td>
-                        {% endfor %}
-                    </tr>
+                {% for cliente in clienteList %}
+                <tr>
+                    <td>{{cliente.nome}}</td>
+                    <td>{{cliente.email}}</td>
+                    <td>{{cliente.endereco}}</td>
+                    <td>{{cliente.telefone}}</td>
+                    <td>
+                        <!--<a href="#modalAlterCliente"><img src="../../lib/img/icon/if_pencil_basic_red.png" alt="pencil"></a>-->
+                        <input type="image" name="{{cliente.email}}" id="remove-cliente"
+                               src="../../lib/img/icon/if_minus.png" alt="remove">
+                    </td>
+                </tr>
+                {% endfor %}
                 </tbody>
             </table>
-        </div>
-        <div class="aba">
             <div id="adicionar-produto">
                 <form id="form-adc-produto" action="" method="post">
-                    <input type="text" name="cadastrar-nome-produto" id="cadastrar-nome-produto" placeholder="Nome do Produto">
-                    <input type="text" name="cadastrar-preco-produto"  id="cadastrar-preco-produto" placeholder="Preço do Produto">
-                    <textarea rows="1" name="cadastrar-descricao-produto" id="cadastrar-descricao-produto" placeholder="Descrição"></textarea>
-                    <input type="image"  name="submit-produto" id="submit-produto" src="../../lib/img/icon/if_Plus_206460.png">
+                    <input type="text" name="cadastrar-nome-produto" id="cadastrar-nome-produto"
+                           placeholder="Nome do Produto">
+                    <input type="text" name="cadastrar-preco-produto" id="cadastrar-preco-produto"
+                           placeholder="Preço do Produto">
+                    <textarea rows="1" name="cadastrar-descricao-produto" id="cadastrar-descricao-produto"
+                              placeholder="Descrição"></textarea>
+                    <input type="image" name="add-produto" id="add-produto" src="../../lib/img/icon/if_Plus_206460.png">
 
                 </form>
             </div>
 
-            <table id="tabela-produto" class="table table-striped table-hover">
+            <table id="tabela-produto" class="table table-hover">
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">Id</th>
@@ -49,11 +58,19 @@
                 </tr>
                 </thead>
                 <tbody>
+                {% for produto in produtoList %}
                 <tr>
-                    {% for produto in produtos %}
-                    <td></td>
-                    {% endfor %}
+                    <td>{{produto.id}}</td>
+                    <td>{{produto.nome}}</td>
+                    <td>{{produto.precoUnit}}</td>
+                    <td>{{produto.descr}}</td>
+                    <td>
+                        <a href="#modalAlterProduto"><img src="../../lib/img/icon/if_pencil_basic_red.png" alt="pencil"></a>
+                        <input type="image" name="{{produto.id}}" id="remove-produto"
+                               src="../../lib/img/icon/if_minus.png" alt="remove">
+                    </td>
                 </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -61,4 +78,20 @@
 
 </div>
 
+<!-- MODAL ALTERAÇÃO DE PRODUTO-->
+<div class="modal fade" id="modalAlterProduto" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content alter-modal">
+            <div class="modal-body alter-modal-body">
+                <form action="" method="post">
+                    <input type="text" name="produto_nome" autocomplete="off" class="form-control" id="produto_nome" placeholder="{{produto.nome}}">
+                    <input type="text" name="produto_preco"  id="produto_preco" placeholder="{{produto.precoUnit}}" >
+                    <textarea rows="1" name="produto_descr"  id="produto_descr" placeholder="{{produto.descr}}"></textarea>
+                    <input type="submit" value="Alterar" class="botao enviar">
+                    <input type="hidden" name="alterProdutoForm">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
