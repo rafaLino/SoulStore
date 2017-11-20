@@ -15,7 +15,8 @@ namespace src\model;
     protected $email;
     protected $senha;
     protected $endereco;
-    protected $telefone;
+     protected $telefone;
+
 
 
     /**
@@ -54,7 +55,7 @@ namespace src\model;
     /**
      * @return string
      */
-    public function getSenha():string
+    public function getSenha()
     {
         return $this->senha;
     }
@@ -100,7 +101,7 @@ namespace src\model;
     }
 
 
-    public function isAdmin():bool{
+    public function isAdmin(){
         if($this instanceof Administrador){
             return true;
         }else{
@@ -129,8 +130,10 @@ namespace src\model;
          $array = null;
         try{
              foreach($atributos as $var){ // foreach de atributos
-                   $key = $var->getName(); // nome do atributo como chave
-                   $array[$key] = $this->{$var->getName()}; //seta array com chave e valor do atributo
+                 if($this->{$var->getName()} != null ) { // se atributo não setado.
+                     $key = $var->getName(); // nome do atributo como chave
+                     $array[$key] = $this->{$var->getName()}; //seta array com chave e valor do atributo
+                 }
              }
             }catch (\Error $e){ //caso erro
              $e->getCode();
@@ -139,6 +142,4 @@ namespace src\model;
          }
          return $array;
      }
-
-
 }

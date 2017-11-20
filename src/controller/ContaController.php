@@ -10,6 +10,7 @@ namespace src\controller;
 use src\model\Cliente;
 use src\model\DAO_Conta;
 use src\model\Conta;
+use src\model\Administrador;
 use src\model\FactoryConta;
 
 class ContaController
@@ -17,44 +18,38 @@ class ContaController
 
     public function cadastrar($pessoa){
 
-            $conta = FactoryConta::construct(FactoryConta::CLIENTE);
+        $conta = new Cliente();
             $validar = new ValidarConta($conta);
-            $validar->Email($pessoa['nome']);
-            $validar->Nome($pessoa['email']);
+            $validar->Email($pessoa['email']);
+            $validar->Nome($pessoa['nome']);
             $validar->Senha($pessoa['senha']);
 
             $daoConta = new DAO_Conta();
-             $daoConta->insert($conta);
-             if($daoConta){
-                 $this->logar($conta->getEmail(),$conta->getSenha());
-             }
-}
+             $result = $daoConta->insert($conta);
+             $this->logar($conta->getEmail(),$conta->getSenha());
 
-    public function logar($email,$senha){
-        try {
-                $log = true;
-                $conta = $this->buscarEmail($email);
-                   if (strcmp($conta->getSenha(), $senha)){
-                       $_SESSION['login'] = $conta;
-                       header("Location:index.php");
-                   } else {
-                       $log = false;
-                   }
-            }catch (\Exception $e){
-                return false;
-            }
-            return $log;
     }
 
-    public  function getModaltoOpen(){
-       // $openConta = array('modal' => "#loginModal");
+    public function logar($email,$senha){
+                $dao = new DAO_Conta();
+                $conta =(object)$dao->selectConta($email,$senha);
+                   if ($conta){
+                       $_SESSION['login']= $conta->getNome();
 
+                   } else {
+                       return false;
+                  }
+
+    }
+
+    public static function getModaltoOpen(){
+       // $openConta = array('modal' => "#loginModal");
         if (isset($_SESSION['login'])) {
-            $usuario = (object)$_SESSION['login'];
-            if ($usuario->isAdmin()) {
-                return "adm.php";
+            $usuario = $_SESSION['login'];
+            if (strcasecmp($usuario,"admin")==0) {
+                return "../controller/adm.php";
             } else {
-                return  "meuCarrinho.php";
+                return  "../controller/meuCarrinho.php";
             }
         }
         return "#loginModal";
@@ -68,14 +63,30 @@ class ContaController
     }
 
 
-    private function buscarEmail($email){
+    private function buscarEmail($email):bool{
         $dao = new DAO_Conta();
-        $conta = $dao->select($email);
+        $arrayConta = $dao->select($email);
+        $resultado = false;
+        if(!$arrayConta)
+            return $resultado;
 
-        if($conta == null) {
-            return false;
+        foreach ($arrayConta as $var){
+            if(strcasecmp($var['email'],$email)){
+                $resultado = true;
+                break;
+            }
         }
-        return $conta;
+        return $resultado;
+}
 
+    public function logout(){
+        session_destroy();
+        $_SESSION['login']=null;
+
+    }
+
+public function getAll(){
+        $dao = new DAO_Conta();
+        return  $dao->select("*");
 }
 }

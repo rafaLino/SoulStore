@@ -6,7 +6,7 @@ $loader = new \Twig_Loader_Filesystem( __DIR__."/../view");
 $twig = new \Twig_Environment($loader);
 
 
-$contaController = (object)$_SESSION['login'];
+$_SESSION['login'];
 
 $openConta['modal'] = $contaController->getModaltoOpen();
 

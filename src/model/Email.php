@@ -15,7 +15,7 @@ abstract  class Email {
     const outlook = "@outlook.com";
     const yahoo = "@yahoo.com";
     const fatec = "@fatec";
-    const adm = "@adm"; //just for admin
+    const adm = "@admin"; //just for admin
 
     private static $constCacheArray = null;
    /**

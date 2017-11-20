@@ -13,18 +13,23 @@ class DAO_Conta implements DAO
 {
     private $connection = null;
 
-    public function insert( Conta $conta){
-        $conexao=DB::getInstance()->getConnection();
+    public function insert($conta){
+        $conexao = DB::getInstance()->getConnection();
+            $conta = (object)$conta; // porque php é um bosta
 
-        $array = array($email=$conta->getEmail(),$nome=$conta->getNome(),$senha=$conta->getSenha(),
-            $telefone=$conta->getTelefone(),$endereco=$conta->getEndereco());
-        $query = "INSERT INTO conta (email, nome, senha, tefelone, endereco)
-                          VALUES ('$array[0]','$array[1]','$array[2]','$array[3]','$array[4]')";
-        $exec = $conexao->prepare($query);
-        $exec->execute();
+        $arrayConta = $conta->convertToArray();
+        $keys = array_keys($arrayConta);
 
+        $place_holders = $this->getPlaceHolders($arrayConta);
+        $fields = $this->getFieldsToInsert($keys);
 
-    }
+        $query = "INSERT INTO CONTA($fields) VALUES ($place_holders)";
+        $prepareStatement = $conexao->prepare($query);
+        $result = $prepareStatement->execute(array_values($arrayConta));
+
+        DB::getInstance()->shutdown();
+        return $result;
+ }
 
     function delete($conta)
     {
@@ -36,8 +41,58 @@ class DAO_Conta implements DAO
         // TODO: Implement update() method.
     }
 
-    function select($conta, ...$args)
+    function select(...$args)
     {
-        // TODO: Implement select() method.
+        $conexao = DB::getInstance()->getConnection();
+        $fields = $this->getFields($args);
+
+        $query = "SELECT $fields FROM conta";
+        $statement = $conexao->prepare($query);
+        $statement->execute();
+
+        DB::getInstance()->shutdown();
+        return $statement->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * @param $email
+     * @return bool|mixed
+     * retorna conta
+     */
+    public function selectConta($email,$senha){
+            $res = false;
+            $conexao = DB::getInstance()->getConnection();
+
+            $query="SELECT * FROM CONTA WHERE email='".$email."' AND senha='".$senha."'";
+            $prepareStatement = $conexao->prepare($query);
+            $prepareStatement->execute();
+            $res = $prepareStatement->fetchObject("src\model\Conta");
+
+            DB::getInstance()->shutdown();
+
+            return $res;
+    }
+
+    /**
+     * @param array $array
+     * @return string
+     * Retorna placeholders "?"
+     */
+    private function getPlaceHolders(array $array):string{
+        return implode(',', array_fill(0, count($array), '?'));
+
+    }
+
+    /**
+     * @param array $key
+     * @return string
+     * retorna chaves de um array para os campos de uma Tabela
+     */
+    private function getFieldsToInsert(array $key):string {
+        return '`'.implode('`, `',$key).'`';
+    }
+
+    private function getFieldsToSelect(array $key):string{
+        return implode('`, `',$key);
     }
 }

@@ -216,6 +216,8 @@ body{
 	position: absolute;
 	top:30px;
 	right:12px;
+	background: url("../../lib/img/icon/if_logout.png") no-repeat;
+	background-size: cover;
 }
 #logout:hover{
 	opacity:0.7;

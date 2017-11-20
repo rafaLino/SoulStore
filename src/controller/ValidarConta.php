@@ -56,9 +56,9 @@ class ValidarConta {
      * @return bool
      */
         public function Senha($senha){
-            if(preg_match("/([^A-Za-z0-9@])/",$senha)===1|| sizeof($senha)< 6){
+            /*if(preg_match("/([^A-Za-z0-9@])/",$senha)===1|| sizeof($senha)< 3){
                 return false;
-            }
+            }*/
             $senha = trim(strtolower($senha));
             $this->conta->setSenha($senha);
             return true;

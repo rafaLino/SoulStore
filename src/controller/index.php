@@ -6,39 +6,46 @@ use src\model\FactoryConta;
 use src\model\Conta;
 use src\model\Cliente;
 require("../../vendor/autoload.php");
-session_start();
+
+
 $loader = new \Twig_Loader_Filesystem(__DIR__ . "/../view");
 $twig = new \Twig_Environment($loader);
+session_start();
 
 $contaController = new ContaController();
-    $openConta['modal'] = $contaController->getModaltoOpen();
-    $log = true;
+$log = true;
+
+$openModal = ContaController::getModaltoOpen();
+
 if (isset($_REQUEST['recsenhaform'])) {
     $contaController->resetSenha($_REQUEST['confirmEmail']);
+    header("Location:index.php");
 }
 
 if (isset($_REQUEST['cadastroform'])) {
     $pessoa['nome'] = $_POST['cadastrar_nome'];
-    $pessoa['email'] = $_POST['cadastrar_email'];
-    $pessoa['senha'] = $_POST['cadastrar_senha'];
+     $pessoa['email'] = $_POST['cadastrar_email'];
+     $pessoa['senha'] = $_POST['cadastrar_senha'];
 
     $contaController->cadastrar($pessoa);
+    header("Location:index.php");
+
 }
 
 if (isset($_REQUEST['loginform'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-
-    $log = $contaController->logar($email,$senha);
-
+    $contaController->logar($email,$senha);
+    header("Location:index.php");
 }
 
 if (isset($_REQUEST['logout'])) {
-    $_SESSION['login'] = null;
+    $contaController->logout();
+    header("Location:index.php");
 }
 
 $index = array(
-    'conta' => $openConta,
+    'openModal' => $openModal,
     'session' => $_SESSION,
     'login' => $log
 );

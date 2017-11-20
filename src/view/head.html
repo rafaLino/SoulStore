@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Pragma" content="no-cache">
+    <!--<meta http-equiv="Pragma" content="no-cache">-->
     <!--IMPORTS-->
         <!-- BOOTSTRAP-->
             <link rel="stylesheet" type="text/css" href="../../lib/bootstrap/bootstrap.css">
@@ -28,7 +28,7 @@
 <div class="topo">
    <div id="superior">
     <div id="box_titulo">
-       <a href="head.html" class="link">
+       <a href="../controller/index.php" class="link">
            <h1 class="titulo">SOULSTORE</h1>
            <h2 class="subtitulo"> A loja do Dark Souls</h2>
        </a>
@@ -39,15 +39,17 @@
                  <div class="arrow-account"  href="#"></div>
                     <div class="box-login">
                        {% if session.login != null %}
-                        <input type="image" name="logout" id="logout" src="../../lib/img/icon/if_logout.png" alt="Logout">
+                        <form action="" method="post">
+                            <input type="submit" class="botao" name="logout" value="" id="logout" src="../../lib/img/icon/if_logout.png">
+                        </form>
                         {% endif %}
                         <ul>
                             <li class="item-topo list" id="welcome">Bem vindo, The chosen one !</li>
                             <li class="list-inicio-login list">
-                                <a id="minha_conta" data-toggle="modal" class="item-topo"  href="{{conta.modal}}" >Minha Conta</a>
+                                <a id="minha_conta" data-toggle="modal" class="item-topo"  href="{{openModal}}" >Minha Conta</a>
                             </li>
                             <li class="list-inicio-login list">
-                                <a href="../controller/meuCarrinho.php" id="meus_pedidos" class="item-topo">Meus Pedidos</a>
+                                <a href="#" id="meus_pedidos" class="item-topo">Meus Pedidos</a>
                             </li>
                         </ul>
                 </div>

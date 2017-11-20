@@ -11,8 +11,8 @@ namespace src\model;
 
 interface DAO
 {
-    function insert(Conta $conta);
-    function delete($conta);
-    function update($conta,$args,$values);
-    function select($conta,...$args);
+    function insert($objeto);
+    function delete($objeto);
+    function update($objeto,$args,$values);
+    function select(...$args);
 }

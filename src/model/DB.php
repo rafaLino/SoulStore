@@ -53,7 +53,7 @@ class DB
                         $this->connection=null;
                         DB::$instance = null;
                         $this->connection =null;
-                        echo"Connection Closed";
+
                     }catch (\Exception $e){
                         $e->getMessage();
                     }
