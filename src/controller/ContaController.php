@@ -31,9 +31,10 @@ class ContaController
     }
 
     public function logar($email,$senha){
-                $dao = new DAO_Conta();
+               $conta = null;
+               $dao = new DAO_Conta();
                 $conta =(object)$dao->selectConta($email,$senha);
-                   if ($conta){
+                   if ($conta != null){
                        $_SESSION['login']= $conta->getNome();
 
                    } else {
@@ -47,9 +48,9 @@ class ContaController
         if (isset($_SESSION['login'])) {
             $usuario = $_SESSION['login'];
             if (strcasecmp($usuario,"admin")==0) {
-                return "../controller/adm.php";
+                return "../view/adm.php";
             } else {
-                return  "../controller/meuCarrinho.php";
+                return  "../view/meuCarrinho.php";
             }
         }
         return "#loginModal";
@@ -82,11 +83,12 @@ class ContaController
     public function logout(){
         session_destroy();
         $_SESSION['login']=null;
+        header("Location:index.php");
 
     }
 
 public function getAll(){
         $dao = new DAO_Conta();
-        return  $dao->select("*");
+        return  $dao->selectAll();
 }
 }

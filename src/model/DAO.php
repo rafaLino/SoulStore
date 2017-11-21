@@ -13,6 +13,8 @@ interface DAO
 {
     function insert($objeto);
     function delete($objeto);
-    function update($objeto,$args,$values);
+    function update($objeto);
     function select(...$args);
+
+
 }

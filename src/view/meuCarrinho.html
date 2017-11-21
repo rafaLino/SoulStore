@@ -19,18 +19,19 @@
                 </thead>
                 <tbody>
                     {% for produto in Car %}
-                        <tr>
+                        <tr scope="row">
                             <td >{{produto.nome}}</td>
                             <td class="preco" >{{produto.precoUnit}}</td>
-                            <td onblur="calcular()"><input class="quantidade-prod" value="1" type="number" name="quantidade"> </td>
+                            <td onblur="calcular()">
+                                <input type="number" class="quantidade-prod" value="1" name="quantidade">
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
                     <div id="preco-total" > </div>
                     <input type="submit" class="botao" id="finalizar-compra" name="finalizar-compra" value="Finalizar Compra">
-
-        </form>
+  </form>
 
     </div>
 

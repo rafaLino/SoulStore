@@ -1,15 +1,18 @@
 <?php
 
-namespace src\controller;
+namespace src\view;
 use src\model\Administrador;
 use src\model\FactoryConta;
 use src\model\Conta;
 use src\model\Cliente;
+use src\controller\ContaController;
+use src\controller\ProdutoController;
 require("../../vendor/autoload.php");
 
 
 $loader = new \Twig_Loader_Filesystem(__DIR__ . "/../view");
 $twig = new \Twig_Environment($loader);
+
 session_start();
 
 $contaController = new ContaController();
@@ -35,17 +38,19 @@ if (isset($_REQUEST['cadastroform'])) {
 if (isset($_REQUEST['loginform'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $contaController->logar($email,$senha);
+    $res = $contaController->logar($email,$senha);
+    if(!$res)
+        header("Location:error.php");
     header("Location:index.php");
 }
 
 if (isset($_REQUEST['logout'])) {
     $contaController->logout();
-    header("Location:index.php");
+
 }
 
 $index = array(
-    'openModal' => $openModal,
+    'openModal'=> $openModal,
     'session' => $_SESSION,
     'login' => $log
 );

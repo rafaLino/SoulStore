@@ -79,7 +79,24 @@ class Produto{
         $this->descricao = $descricao;
     }
 
-
+    public function convertToArray():array {
+        $reflect = new \ReflectionClass(get_called_class()); // Recebe todas as informações da classe
+        $atributos = $reflect->getProperties(); //recebe atributos da classe
+        $array = null;
+        try{
+            foreach($atributos as $var){ // foreach de atributos
+                if($this->{$var->getName()} != null ) { // se atributo não setado.
+                    $key = $var->getName(); // nome do atributo como chave
+                    $array[$key] = $this->{$var->getName()}; //seta array com chave e valor do atributo
+                }
+            }
+        }catch (\Error $e){ //caso erro
+            $e->getCode();
+            echo "conversão impossível";
+            die;
+        }
+        return $array;
+    }
 
 
 }

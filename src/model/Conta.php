@@ -125,7 +125,7 @@ namespace src\model;
     }
 
      public function convertToArray():array {
-         $reflect = new \ReflectionClass(get_called_class()); // Recebe todas as informações de FactoryConta
+         $reflect = new \ReflectionClass(get_called_class()); // Recebe todas as informações da classe
          $atributos = $reflect->getProperties(); //recebe atributos da classe
          $array = null;
         try{

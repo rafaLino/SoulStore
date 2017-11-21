@@ -36,9 +36,16 @@ class DAO_Conta implements DAO
         // TODO: Implement delete() method.
     }
 
-    function update($conta, $args,$values)
+    function update($conta)
     {
-        // TODO: Implement update() method.
+        $conexao = DB::getInstance()->getConnection();
+        $email=$conta->getEmail();
+        $array = array('Rafael', '654321','rua rafael da silva','11564265874');
+        $query = "UPDATE conta SET nome = ?, senha = ?, endereco = ?, telefone = ?  WHERE email='$email'";
+        $exec = $conexao->prepare($query);
+        $exec->execute($array);
+        DB::getInstance()->shutdown();
+        $conexao=null;
     }
 
     function select(...$args)
@@ -52,6 +59,16 @@ class DAO_Conta implements DAO
 
         DB::getInstance()->shutdown();
         return $statement->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    function selectAll(){
+        $conexao = DB::getInstance()->getConnection();
+        $query = "SELECT conta.* FROM conta JOIN administrador ON conta.email != administrador.email";
+        $statement = $conexao->prepare($query);
+        $statement->execute();
+        $array = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        DB::getInstance()->shutdown();
+        return $array;
     }
 
     /**

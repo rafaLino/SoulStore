@@ -8,7 +8,7 @@
             <h3 id="aba-title-produto" onclick="showAba('produto')" class="aba-title">Produtos</h3>
         </div>
         <div class="aba">
-            <table id="tabela-cliente" class="table">
+            <table id="tabela-cliente" class="table table-dark">
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">Nome</th>
@@ -19,7 +19,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for cliente in clienteList %}
+                {% for cliente in clientList %}
                 <tr>
                     <td>{{cliente.nome}}</td>
                     <td>{{cliente.email}}</td>
@@ -27,8 +27,10 @@
                     <td>{{cliente.telefone}}</td>
                     <td>
                         <!--<a href="#modalAlterCliente"><img src="../../lib/img/icon/if_pencil_basic_red.png" alt="pencil"></a>-->
-                        <input type="image" name="{{cliente.email}}" id="remove-cliente"
-                               src="../../lib/img/icon/if_minus.png" alt="remove">
+                        <form action="" method="POST">
+                            <input type="submit" class="botao remove-item" value="" id="remove-cliente">
+                            <input type="hidden" value="{{cliente.email}}" name="remove_email">
+                        </form>
                     </td>
                 </tr>
                 {% endfor %}
@@ -36,14 +38,14 @@
             </table>
             <div id="adicionar-produto">
                 <form id="form-adc-produto" action="" method="post">
-                    <input type="text" name="cadastrar-nome-produto" id="cadastrar-nome-produto"
+                    <input type="text" name="nome-produto" id="cadastrar-nome-produto"
                            placeholder="Nome do Produto">
-                    <input type="text" name="cadastrar-preco-produto" id="cadastrar-preco-produto"
+                    <input type="text" name="preco-produto" id="cadastrar-preco-produto"
                            placeholder="Preço do Produto">
-                    <textarea rows="1" name="cadastrar-descricao-produto" id="cadastrar-descricao-produto"
+                    <textarea rows="1" name="descricao-produto" id="cadastrar-descricao-produto"
                               placeholder="Descrição"></textarea>
-                    <input type="image" name="add-produto" id="add-produto" src="../../lib/img/icon/if_Plus_206460.png">
-
+                    <input type="submit" class="botao" name="add-produto" value="" id="add-produto">
+                    <input type="hidden" name="add">
                 </form>
             </div>
 
@@ -54,7 +56,9 @@
                     <th scope="col">Nome</th>
                     <th scope="col">Preço Unitário</th>
                     <th scope="col">Descrição</th>
-                    <th scope="col">&nbsp</th>
+                    <th scope="col">
+                        <a href="#modalAlterProduto" data-toggle="modal"><img id="editar-produto" src="../../lib/img/icon/if_pencil_basic_red.png" alt="pencil"></a>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -63,11 +67,12 @@
                     <td>{{produto.id}}</td>
                     <td>{{produto.nome}}</td>
                     <td>{{produto.precoUnit}}</td>
-                    <td>{{produto.descr}}</td>
+                    <td>{{produto.descricao}}</td>
                     <td>
-                        <a href="#modalAlterProduto"><img src="../../lib/img/icon/if_pencil_basic_red.png" alt="pencil"></a>
-                        <input type="image" name="{{produto.id}}" id="remove-produto"
-                               src="../../lib/img/icon/if_minus.png" alt="remove">
+                        <form action="tester.php" method="post">
+                         <input class="botao remove-item" type="submit"  value="" id="remove-produto">
+                         <input type="hidden" value="{{produto.id}}" name="remove_produto">
+                        </form>
                     </td>
                 </tr>
                 {% endfor %}
@@ -83,15 +88,18 @@
     <div class="modal-dialog">
         <div class="modal-content alter-modal">
             <div class="modal-body alter-modal-body">
-                <form action="" method="post">
-                    <input type="text" name="produto_nome" autocomplete="off" class="form-control" id="produto_nome" placeholder="{{produto.nome}}">
-                    <input type="text" name="produto_preco"  id="produto_preco" placeholder="{{produto.precoUnit}}" >
-                    <textarea rows="1" name="produto_descr"  id="produto_descr" placeholder="{{produto.descr}}"></textarea>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <form action="../view/tester.php" method="get">
+                    <input type="text" name="produto_nome" id="produto_nome" placeholder="{{produto.id}}">
+                    <input type="text" name="produto_preco"  id="produto_preco" placeholder="{{id}}" >
+                    <textarea rows="1" name="produto_descr"  id="produto_descr" placeholder="Descrição"></textarea>
+                    <input type="hidden" id="produto_id" name="id" value="{% do id %}" >
                     <input type="submit" value="Alterar" class="botao enviar">
                     <input type="hidden" name="alterProdutoForm">
+
                 </form>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
+{% endblock conteudo %}
