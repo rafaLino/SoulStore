@@ -102,6 +102,7 @@
 #editar-produto{
     position: relative;
     top:0;
+    left:16px;
     margin-right:10px;
     height: 30px;
     width: 30px;

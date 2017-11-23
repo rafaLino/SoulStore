@@ -25,9 +25,25 @@ if(isset($_REQUEST['add'])){
 if (isset($_REQUEST['logout'])) {
     $contaController->logout();
 }
-
 if(isset($_REQUEST['remove_email'])){
+    $cliente = $_REQUEST['remove_email'];
+    $contaController->excluir($cliente);
+    header("Location:adm.php");
+}
+if(isset($_REQUEST['remove_produto'])){
+    $produto_id = $_REQUEST['remove_produto'];
 
+    $produtoController->excluir($produto_id);
+    header("Location:adm.php");
+}
+if(isset($_REQUEST['alterProdutoForm'])){
+    $produto['id'] = $_REQUEST['produto_id'];
+    $produto['nome'] = $_REQUEST['produto_nome'];
+    $produto['precoUnit'] = $_REQUEST['produto_preco'];
+    $produto['descricao'] = $_REQUEST['produto_descr'];
+
+    $produtoController->alterar($produto);
+    header("Location:adm.php");
 }
 
 

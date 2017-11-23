@@ -9,7 +9,7 @@
 namespace src\model;
 
 
-class DAO_Produto implements DAO
+class DAO_Produto
 {
     function insert($produto)
     {
@@ -32,17 +32,45 @@ class DAO_Produto implements DAO
 
     function delete($conta)
     {
-        // TODO: Implement delete() method.
+        $conexao = DB::getInstance()->getConnection();
+        $query = "DELETE FROM PRODUTO WHERE id='$conta'";
+
+        $prepare = $conexao->prepare($query);
+        $result = $prepare->execute();
+        DB::getInstance()->shutdown();
+        return $result;
     }
 
-    function update($conta)
+    function update(Produto $conta)
     {
-        // TODO: Implement update() method.
+        $conexao = DB::getInstance()->getConnection();
+        $array = $conta->convertToArray();
+        $id = $array['id'];
+        unset($array['id']);
+
+        $query = "UPDATE PRODUTO SET `nome` = ?, `precoUnit` = ?, `descricao` = ? WHERE `id` = $id";
+        $prepare = $conexao->prepare($query);
+        $prepare->bindParam(1,$array['nome']);
+        $prepare->bindParam(2,$array['precoUnit']);
+        $prepare->bindParam(3,$array['descricao']);
+
+        $result = $prepare->execute();
+        DB::getInstance()->shutdown();
+        $conexao = null;
+        return $result;
     }
 
     function select(...$args)
     {
-        // TODO: Implement select() method.
+        $conexao = DB::getInstance()->getConnection();
+        $fields = $this->getFieldsToSelect($args);
+
+        $query = "SELECT $fields FROM PRODUTO";
+        $statement = $conexao->prepare($query);
+        $statement->execute();
+
+        DB::getInstance()->shutdown();
+        return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function selectAll(){

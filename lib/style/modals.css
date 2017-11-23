@@ -205,4 +205,76 @@ button.close{
     outline:none;
 }
 
+button.dark{
+    color: #040404;
+    opacity: 0.8;
+}
 
+.alter-modal{
+    top:200px;
+    background: #2b2b2b;
+}
+#form-alter-produto input[type=text],
+#form-alter-produto textarea{
+    width: 450px;
+    height: 35px;
+    resize: none;
+    padding-left: 8px;
+}
+
+#form-alter-produto input[type=text]::-webkit-input-placeholder
+{
+    font-family: Calibri,optimusPriceps;
+    padding-left: 20px;
+    font-weight: bold;
+}
+#form-alter-produto textarea::-webkit-input-placeholder{
+    font-family: Calibri,optimusPriceps;
+    padding-left: 20px;
+    padding-top: 10px;
+    font-weight: bold;
+
+}
+#produto_id{
+    width:80px;
+    height: 28px;
+    border:1px solid rgba(43,43,43,0.5);
+    padding-left: 5px;
+    position: absolute;
+    top:10px;
+    left:60px;
+}
+#produto_id:focus{
+    border:2px solid rgba(0, 0, 0, 0.66);
+}
+
+#form-span-id{
+    font-family: ringBearer;
+    color:white;
+    position: relative;
+    top:0;
+    left:20px;
+
+}
+
+.input-produto{
+    display:block;
+    border:1px groove #2b2b2b;
+    Margin:5px 0 12px 15px;
+}
+
+.input-produto:hover{
+    border:1px solid black;
+    box-shadow: 1px 1px rgba(0, 0, 59, 0.84);
+
+}
+
+.input-produto:focus{
+    border:1px solid dimgrey;
+    box-shadow: 1px 0 1px black;
+}
+
+#submit-alterar-produto{
+    position: relative;
+    left:110px;
+}

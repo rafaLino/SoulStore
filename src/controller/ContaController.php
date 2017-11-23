@@ -27,7 +27,25 @@ class ContaController
             $daoConta = new DAO_Conta();
              $result = $daoConta->insert($conta);
              $this->logar($conta->getEmail(),$conta->getSenha());
+            return $result;
+    }
+    public function excluir($id){
+        $dao = new DAO_Conta();
+        $result=  $dao->delete($id);
+        $dao = null;
+        return $result;
+    }
+    public function alterar($pessoa){
+        $conta = new Cliente();
+        $validar = new ValidarConta($conta);
+        $validar->Email($pessoa['email']);
+        $validar->Nome($pessoa['nome']);
+        $validar->Senha($pessoa['senha']);
 
+        $daoConta = new DAO_Conta();
+        $result = $daoConta->update($conta);
+        $daoConta=null;
+        return $result;
     }
 
     public function logar($email,$senha){
@@ -36,6 +54,7 @@ class ContaController
                 $conta =(object)$dao->selectConta($email,$senha);
                    if ($conta != null){
                        $_SESSION['login']= $conta->getNome();
+                       return true;
 
                    } else {
                        return false;
@@ -59,6 +78,7 @@ class ContaController
     public function resetSenha($email){
              $sendEmail = new sendEmail();
              $sendEmail->recuperarSenha($email);
+             $sendEmail=null;
             header("Location:index.php");
 
     }
@@ -89,6 +109,8 @@ class ContaController
 
 public function getAll(){
         $dao = new DAO_Conta();
-        return  $dao->selectAll();
+        $result = $dao->selectAll();
+            $dao = null;
+             return $result;
 }
 }

@@ -33,25 +33,40 @@ class DAO_Conta implements DAO
 
     function delete($conta)
     {
-        // TODO: Implement delete() method.
+        $conexao = DB::getInstance()->getConnection();
+        $query = "DELETE FROM CONTA WHERE email='$conta'";
+
+        $prepare = $conexao->prepare($query);
+        $result = $prepare->execute();
+        DB::getInstance()->shutdown();
+        return $result;
+
     }
 
     function update($conta)
     {
         $conexao = DB::getInstance()->getConnection();
-        $email=$conta->getEmail();
-        $array = array('Rafael', '654321','rua rafael da silva','11564265874');
+        $conta = (object)$conta;
+        $array = $conta->convertToArray();
+        $email= $conta->getEmail();
+        unset($array['email']);
+
         $query = "UPDATE conta SET nome = ?, senha = ?, endereco = ?, telefone = ?  WHERE email='$email'";
-        $exec = $conexao->prepare($query);
-        $exec->execute($array);
+        $prepare = $conexao->prepare($query);
+        $prepare->bindParam(1,$array['nome']);
+        $prepare->bindParam(2,$array['senha']);
+        $prepare->bindParam(3,$array['endereco']);
+        $prepare->bindParam(4,$array['telefone']);
+       $result =  $prepare->execute();
         DB::getInstance()->shutdown();
         $conexao=null;
+        return $result;
     }
 
     function select(...$args)
     {
         $conexao = DB::getInstance()->getConnection();
-        $fields = $this->getFields($args);
+        $fields = $this->getFieldsToSelect($args);
 
         $query = "SELECT $fields FROM conta";
         $statement = $conexao->prepare($query);
@@ -80,7 +95,7 @@ class DAO_Conta implements DAO
             $res = false;
             $conexao = DB::getInstance()->getConnection();
 
-            $query="SELECT * FROM CONTA WHERE email='".$email."' AND senha='".$senha."'";
+            $query="SELECT conta.* FROM CONTA WHERE email='".$email."' AND senha='".$senha."'";
             $prepareStatement = $conexao->prepare($query);
             $prepareStatement->execute();
             $res = $prepareStatement->fetchObject("src\model\Conta");

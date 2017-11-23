@@ -23,11 +23,34 @@ class ProdutoController
         $item->setDescricao($produto['descricao']);
 
         $dao = new DAO_Produto();
-        $dao->insert($item);
+        $result = $dao->insert($item);
+        $dao = null;
+        return $result;
     }
 
     public function getAll(){
         $dao = new DAO_Produto();
-        return  $dao->selectAll();
+        $result =  $dao->selectAll();
+        $dao = null;
+        return $result;
+    }
+
+    public function excluir($id){
+        $dao = new DAO_Produto();
+        $result =  $dao->delete($id);
+        $dao = null;
+        return $result;
+    }
+
+    public function alterar($produto){
+        $new = new Produto();
+        $new->setId($produto['id']);
+        $new->setNome($produto['nome']);
+        $new->setPrecoUnit($produto['precoUnit']);
+        $new->setDescricao($produto['descricao']);
+        $dao = new DAO_Produto();
+        $result = $dao->update($new);
+        $dao = null;
+        return $result;
     }
 }
