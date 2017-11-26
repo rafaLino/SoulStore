@@ -33,31 +33,34 @@ class ContaController
         $dao = new DAO_Conta();
         $result=  $dao->delete($id);
         $dao = null;
-        return $result;
+        $this->logout();
     }
     public function alterar($pessoa){
-        $conta = new Cliente();
-        $validar = new ValidarConta($conta);
-        $validar->Email($pessoa['email']);
-        $validar->Nome($pessoa['nome']);
-        $validar->Senha($pessoa['senha']);
+        $conta = new Conta();
+        $conta->setNome($pessoa['nome']);
+        $conta->setSenha($pessoa['senha']);
+        $conta->setEndereco($pessoa['endereco']);
+        $conta->setTelefone($pessoa['telefone']);
 
         $daoConta = new DAO_Conta();
         $result = $daoConta->update($conta);
+        if($result)
+            $_SESSION['login'] = $conta;
         $daoConta=null;
         return $result;
     }
 
     public function logar($email,$senha){
-               $conta = null;
+
                $dao = new DAO_Conta();
-                $conta =(object)$dao->selectConta($email,$senha);
-                   if ($conta != null){
-                       $_SESSION['login']= $conta->getNome();
+                $conta = $dao->selectConta($email,$senha);
+                   if ($conta){
+                       $_SESSION['login']= $conta;
+                       //$_SESSION['nome']= $conta->getNome();
                        return true;
 
                    } else {
-                       return false;
+                       $_SESSION['login'] = null;
                   }
 
     }
@@ -65,8 +68,9 @@ class ContaController
     public static function getModaltoOpen(){
        // $openConta = array('modal' => "#loginModal");
         if (isset($_SESSION['login'])) {
-            $usuario = $_SESSION['login'];
-            if (strcasecmp($usuario,"admin")==0) {
+             $usuario = $_SESSION['login'];
+            //if (strcasecmp($usuario,"admin")==0)
+            if($usuario instanceof  Administrador){
                 return "../view/adm.php";
             } else {
                 return  "../view/meuCarrinho.php";
@@ -101,6 +105,7 @@ class ContaController
 }
 
     public function logout(){
+        session_start();
         session_destroy();
         $_SESSION['login']=null;
         header("Location:index.php");

@@ -27,6 +27,7 @@
 button.close{
     color: #ffffff;
     opacity: 0.8;
+    z-index: 1;
 }
 .btn-in{
     font-family: Chiller regular;
@@ -215,6 +216,7 @@ button.dark{
     background: #2b2b2b;
 }
 #form-alter-produto input[type=text],
+#form-alter-produto input[type=password],
 #form-alter-produto textarea{
     width: 450px;
     height: 35px;
@@ -222,7 +224,8 @@ button.dark{
     padding-left: 8px;
 }
 
-#form-alter-produto input[type=text]::-webkit-input-placeholder
+#form-alter-produto input[type=text]::-webkit-input-placeholder,
+#form-alter-produto input[type=password]::-webkit-input-placeholder
 {
     font-family: Calibri,optimusPriceps;
     padding-left: 20px;
@@ -277,4 +280,38 @@ button.dark{
 #submit-alterar-produto{
     position: relative;
     left:110px;
+}
+
+
+.remover{
+    margin:0 auto;
+    display: block;
+    position: absolute;
+    top:-8px;
+    right:80px;
+    width: 190px;
+    height:35px;
+    background-color: #83121e;
+    box-shadow: 0 1px 3px grey;
+    color:white;
+    font-size: 16px;
+
+}
+
+.remover:hover{
+    background-color: #d10d1d;
+}
+.remover:active{
+    transform: translateY(2px);
+    box-shadow: 1px 1px 3px #666;
+    background-color: #d10d1d;
+}
+
+#removerConta{
+    text-transform: capitalize;
+    font-family: optimusPriceps;
+    font-size: large;
+    position: absolute;
+    top:-5px;
+    width: 520px;
 }

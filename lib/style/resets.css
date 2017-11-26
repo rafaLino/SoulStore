@@ -31,6 +31,10 @@
     color:transparent;
 
 }
+.input:disabled{
+    background-color: #bdbdbd;
+    cursor: not-allowed;
+}
 
 .link {
     text-decoration: none;

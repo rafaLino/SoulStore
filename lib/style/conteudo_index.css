@@ -1,0 +1,106 @@
+.bloco {
+    background-color: #242424;
+    height: 300px;
+    width: 180px;
+    float: left;
+    margin-left: 8px;
+}
+
+.camisa {
+    margin-left: 9px;
+    margin-top: 5px;
+
+}
+
+.text_produto {
+    text-align: center;
+    text-shadow: 1px 1px 1px yellow;
+    font-size: 14px;
+    color:white;
+    margin: 5px;
+
+}
+
+.pricebox {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    height: 28px;
+    width: 60px;
+    background-color: #FFB01C;
+}
+
+.spanprice {
+    position: relative;
+    margin:3px;
+}
+
+
+.price {
+    position: relative;
+    top:5px;
+    left:0;
+    font-size: 14px;
+    color:black;
+
+}
+
+.parcela {
+    display: block;
+    position: relative;
+    top:-8px;
+    float: right;
+    text-transform: uppercase;
+    margin-right: 5px;
+}
+
+.qntparcela {
+    position: absolute;
+    color: #FF751C;
+    font-size: 12px;
+    margin-top: 26px;
+    margin-left: -40px;
+}
+
+.valorparcela {
+    color: #FF751C;
+    font-size: 12px;
+    float: right;
+    margin-top: 26px;
+    margin-right: 6px;
+}
+
+.ou {
+    font-size: 11px;
+    color: white;
+    position: absolute;
+    margin-top: 11px;
+    margin-left: -9px;
+}
+
+.de {
+    position: absolute;
+    margin-top: 26px;
+    margin-left: -20px;
+    font-size: 11px;
+    color: white;
+}
+
+.botao-add {
+    position: absolute;
+    display: block;
+    width: 127px;
+    height: 28px;
+    border-radius: 5px;
+    top:28px;
+    margin-top: 12px;
+    margin-left: 27px;
+    background-color: darkorange;
+    color:black;
+}
+
+.botao-add:hover{
+    opacity: 0.75;
+    box-shadow: 0 2px 3px rgba(12, 112, 255, 0.77);
+}

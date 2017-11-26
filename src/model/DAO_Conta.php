@@ -9,7 +9,7 @@
 namespace src\model;
  /** TODO: SQL comands;*/
 
-class DAO_Conta implements DAO
+class DAO_Conta
 {
     private $connection = null;
 
@@ -23,7 +23,7 @@ class DAO_Conta implements DAO
         $place_holders = $this->getPlaceHolders($arrayConta);
         $fields = $this->getFieldsToInsert($keys);
 
-        $query = "INSERT INTO CONTA($fields) VALUES ($place_holders)";
+        $query = "INSERT INTO soulstore.CONTA($fields) VALUES ($place_holders)";
         $prepareStatement = $conexao->prepare($query);
         $result = $prepareStatement->execute(array_values($arrayConta));
 
@@ -33,8 +33,9 @@ class DAO_Conta implements DAO
 
     function delete($conta)
     {
+        $result = 0;
         $conexao = DB::getInstance()->getConnection();
-        $query = "DELETE FROM CONTA WHERE email='$conta'";
+        $query = "DELETE FROM soulstore.CONTA WHERE conta.email='$conta'";
 
         $prepare = $conexao->prepare($query);
         $result = $prepare->execute();
@@ -43,20 +44,18 @@ class DAO_Conta implements DAO
 
     }
 
-    function update($conta)
+    function update(Conta $conta)
     {
+
         $conexao = DB::getInstance()->getConnection();
-        $conta = (object)$conta;
         $array = $conta->convertToArray();
         $email= $conta->getEmail();
-        unset($array['email']);
-
-        $query = "UPDATE conta SET nome = ?, senha = ?, endereco = ?, telefone = ?  WHERE email='$email'";
+        $query = "UPDATE soulstore.conta SET `nome` = :nome, `senha` = :senha, `endereco` = :endereco, `telefone` = :telefone  WHERE `email`=$email";
         $prepare = $conexao->prepare($query);
-        $prepare->bindParam(1,$array['nome']);
-        $prepare->bindParam(2,$array['senha']);
-        $prepare->bindParam(3,$array['endereco']);
-        $prepare->bindParam(4,$array['telefone']);
+        $prepare->bindParam(':nome',$array['nome']);
+        $prepare->bindParam(':senha',$array['senha']);
+        $prepare->bindParam(':endereco',$array['endereco']);
+        $prepare->bindParam(':telefone',$array['telefone']);
        $result =  $prepare->execute();
         DB::getInstance()->shutdown();
         $conexao=null;
@@ -68,7 +67,7 @@ class DAO_Conta implements DAO
         $conexao = DB::getInstance()->getConnection();
         $fields = $this->getFieldsToSelect($args);
 
-        $query = "SELECT $fields FROM conta";
+        $query = "SELECT $fields FROM soulstore.conta";
         $statement = $conexao->prepare($query);
         $statement->execute();
 
@@ -77,8 +76,9 @@ class DAO_Conta implements DAO
     }
 
     function selectAll(){
+        $array = 0;
         $conexao = DB::getInstance()->getConnection();
-        $query = "SELECT conta.* FROM conta JOIN administrador ON conta.email != administrador.email";
+        $query = "SELECT conta.* FROM soulstore.conta JOIN soulstore.administrador ON soulstore.conta.email != soulstore.administrador.email";
         $statement = $conexao->prepare($query);
         $statement->execute();
         $array = $statement->fetchAll(\PDO::FETCH_ASSOC);
@@ -92,16 +92,26 @@ class DAO_Conta implements DAO
      * retorna conta
      */
     public function selectConta($email,$senha){
-            $res = false;
+            $res = 0;
             $conexao = DB::getInstance()->getConnection();
 
-            $query="SELECT conta.* FROM CONTA WHERE email='".$email."' AND senha='".$senha."'";
-            $prepareStatement = $conexao->prepare($query);
+            $queryAdm ="SELECT conta.* FROM CONTA JOIN ADMINISTRADOR ON conta.email = administrador.email WHERE conta.email='".$email."' AND conta.senha='".$senha."'";
+            $queryCli="SELECT conta.* FROM CONTA JOIN ADMINISTRADOR ON conta.email != administrador.email  WHERE conta.email='".$email."' AND conta.senha='".$senha."'";
+
+            $prepareStatement = $conexao->prepare($queryAdm);
             $prepareStatement->execute();
-            $res = $prepareStatement->fetchObject("src\model\Conta");
 
+            if($prepareStatement->rowCount() > 0) {
+                $res = $prepareStatement->fetchObject("src\model\Administrador");
+            }
+            else{
+                $prepareStatement = $conexao->prepare($queryCli);
+                $prepareStatement->execute();
+                 if($prepareStatement->rowCount()> 0 ) {
+                     $res = $prepareStatement->fetchObject("src\model\Cliente");
+                }
+            }
             DB::getInstance()->shutdown();
-
             return $res;
     }
 

@@ -31,6 +31,7 @@ if (isset($_REQUEST['cadastroform'])) {
      $pessoa['senha'] = $_POST['cadastrar_senha'];
 
     $contaController->cadastrar($pessoa);
+
     header("Location:index.php");
 
 }
@@ -39,9 +40,12 @@ if (isset($_REQUEST['loginform'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     $res = $contaController->logar($email,$senha);
-    if(!$res)
-        header("Location:error.php");
-    header("Location:index.php");
+    if($res==0){
+        header("Location:error.html");
+    }
+     header("Location:index.php");
+
+
 }
 
 if (isset($_REQUEST['logout'])) {

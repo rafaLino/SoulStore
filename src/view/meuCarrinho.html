@@ -1,39 +1,81 @@
 {% extends 'head.html'%}
-{% block conteudo%}
+{% block conteudo %}
 <link rel="stylesheet" href="../../lib/style/conteudo_car.css">
-<!--
-        TODO: MENU DO CARRINHO
-        TODO: LISTA DE PRODUTOS ADDICIONADOS
-        TODO: CAIXA DE CONFIGURAÇÃO DA CONTA
-    -->
 <div class="conteudo" >
-    <div id="meuCarrinho" class="painel" onload="calcular()">
+    <div id="open-aba-config" class="aba-conta-config aba-open" onclick="abaConfig()"></div>
+    <div  id="conta-config" class="conta-config">
+        <div id="menu">
+         <img class="side-nav"  src="../../lib/img/icon/if_account-circle.png">
+            <a class=" side-nav" href="#modalAlterCliente" data-toggle="modal">Alterar Dados</a>
+            <a class=" side-nav" href="#">Opções da Conta</a>
+            <a class=" side-nav" href="#modalRemoverConta" data-toggle="modal" >Remover Conta</a>
+        </div>
+
+    </div>
+    <div id="meuCarrinho" class="painel" onmouseover="calcular()">
         <form action="" method="post">
             <table id="tabela-carrinho" class="table">
                 <thead>
                     <tr>
                         <th scope="col">Nome</th>
-                        <th scope="col">Preço Unitário</th>
+                        <th scope="col">Preço (R$)</th>
                         <th scope="col">Quantidade</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for produto in Car %}
+                {% for i in 1..4 %}
                         <tr scope="row">
-                            <td >{{produto.nome}}</td>
-                            <td class="preco" >{{produto.precoUnit}}</td>
+                            <td >prod</td>
+                            <td class="carrinhoPreco" >{{10.22+i}}</td>
                             <td onblur="calcular()">
-                                <input type="number" class="quantidade-prod" value="1" name="quantidade">
+                                <input type="number" class="input" autocomplete="off" id="quantProduto" placeholder="0" min="1" step="1" name="quantidade">
                             </td>
                         </tr>
                     {% endfor %}
                 </tbody>
+                 <tfoot>
+                    <span id="span-preco" class="tfooter">R$</span><div  class="tfooter" id="preco-total"> </div>
+                        <input id="preco-total-input" name="total" type="hidden" value="">
+                        <input type="submit" class="botao finalizar tfooter" id="finalizar-compra" name="finalizar-compra" value="Finalizar Compra">
+
+                 </tfoot>
             </table>
-                    <div id="preco-total" > </div>
-                    <input type="submit" class="botao" id="finalizar-compra" name="finalizar-compra" value="Finalizar Compra">
-  </form>
-
+        </form>
+    </div><!--FIM MEUCARRINHO-->
+   <!--MODAL ALTERAÇÃO CLIENTE-->
+    <div class="modal fade" id="modalAlterCliente" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content alter-modal">
+                <div class="modal-body alter-modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <form id="form-alter-produto" action="" method="GET">
+                        <input class="input input-produto" value="{{session.login.nome}}" autocomplete="off" type="text" name="cliente_nome" id="cliente_nome" placeholder="Nome">
+                        <input class="input input-produto" value="{{session.login.senha}}" autocomplete="off" type="password" name="cliente_senha"  id="cliente_senha" placeholder="Senha" >
+                        <input class="input input-produto"  autocomplete="off" value="{{session.login.endereco}}" type="text" name="cliente_endereco"  id="cliente_endereco" placeholder="Endereço">
+                        <input class="input input-produto" value="{{session.login.telefone}}" type="text" autocomplete="off" name="cliente_telefone" id="cliente_telefone" placeholder="Telefone">
+                        <input name="cliente_email" value="{{session.login.email}}" type="hidden" >
+                        <input type="submit" id="submit-alterar-produto" value="Alterar" class="botao enviar">
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
+</div>
+<!--REMOVER CONTA-->
+<div class="modal fade" id="modalRemoverConta" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content senha-modal">
+            <div class="modal-header ">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 id="removerConta">You Will Lose Your Souls! Do You Really Want Remove Your Account?</h3>
+            </div>
+            <div class="modal-body senha-modal-body">
+                <form action="" method="POST">
+                    <input id="botao-remover" type="submit" class="botao remover"  value="Remover" name="removerConta">
+                    <input type="hidden" value="{{session.login.email}}" name="RemoverContaForm">
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

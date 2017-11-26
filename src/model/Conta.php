@@ -8,7 +8,7 @@
 
 namespace src\model;
 
- class Conta
+class Conta
 {
 
     protected $nome;

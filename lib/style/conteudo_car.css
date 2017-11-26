@@ -1,10 +1,160 @@
 .painel{
     background-color: whitesmoke;
-    margin:8px 5px;
+    margin:8px 10px 8px 50px;
     position:absolute;
     top:0;
-    width:99%;
+    width:90%;
     height: 400px;
     border-radius: 6px;
 
 }
+
+#tabela-carrinho{
+    padding-left: 35px;
+    width: 100%;
+    height:50px;
+}
+#tabela-carrinho thead{
+    border-bottom: 1px groove #2b2b2b;
+}
+
+
+#tabela-carrinho tbody tr:hover{
+    background-color: rgba(208, 208, 208, 0.66);
+
+}
+#tabela-carrinho tr:active{
+    background-color: rgba(208, 208, 208, 0.66);
+}
+#tabela-carrinho tfoot{
+    width: 100%;
+    height: 65px;
+    background-color: #4d4d4d;
+    position: absolute;
+    bottom:0;
+
+}
+
+
+#quantProduto{
+    width: 60px;
+    height: 28px;
+    box-shadow: 1px 3px 4px #858585;
+    padding-left: 3px;
+}
+#quantProduto::-webkit-input-placeholder {
+    padding-left: 3px;
+}
+.tfooter{
+    display: block;
+    position: absolute;
+    z-index: 1;
+}
+#preco-total{
+   /* border:1px solid darkorange;*/
+    width: 200px;
+    height: 40px;
+    font-size: 36px;
+    left:55px;
+    bottom:15px;
+    z-index: 1;
+    color: white;
+}
+#span-preco{
+    font-size: 36px;
+    color:white;
+    bottom:5px;
+}
+
+#finalizar-compra{
+    right:20px;
+    bottom:12px;
+}
+.finalizar{
+    width: 400px;
+    height: 40px;
+    font-size: 28px;
+    background-color: #3a6ac1;
+    color:ghostwhite;
+}
+.finalizar:hover{
+    /*color: rgba(248, 248, 255, 0.76);*/
+    box-shadow: 1px 4px 4px grey;
+}
+
+.finalizar:active{
+    transform: TranslateY(1px);
+    box-shadow: 1px 4px 3px #777777;
+}
+
+.aba-conta-config{
+
+    background-repeat: no-repeat;
+    background-color: #0f0f0f;
+    background-position: center;
+    background-size: cover;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    width:35px;
+    height:55px;
+    display: block;
+    position: fixed;
+    top:215px;
+    left:0;
+    cursor: pointer;
+
+}
+.aba-open{
+    background-image: url("../../lib/img/icon/arrow_right_white.png");
+    transition: left 0.4s , background-image 0.3s;
+    transition-timing-function: ease-in;
+
+}
+/*.aba-close{
+    background-image: url("../../lib/img/icon/arrow_right_white.png");
+    display: none;
+
+}*/
+.aba-conta-config:hover{
+    opacity: 0.85;
+}
+
+.conta-config{
+    display: block;
+    width:0;
+    height:450px;
+    background-color: rgb(0, 0, 0);
+    position: absolute;
+    top:-2px;
+    left:-183px;
+    border-top: 3px solid black;
+    border-bottom: 1px solid black;
+    transition: width 0.4s;
+    transition-timing-function: ease-in;
+}
+#menu{
+    display: none;
+    transition: display 1s;
+}
+
+#menu img{
+    display: block;
+    margin-left:30%;
+    background-color: white;
+    background-clip: padding-box;
+    filter:invert(100%);
+}
+a.side-nav{
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 15px;
+    padding-top: 15px;
+    position: relative;
+    top:12px;
+    color:white;
+    line-height: 2;
+}
+
+
+
